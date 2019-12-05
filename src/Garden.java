@@ -46,6 +46,7 @@ public class Garden extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 		setBounds(100, 100, 800, 650);
 		Image img = new ImageIcon(this.getClass().getResource("/garden.png")).getImage();
 		Image img1 = new ImageIcon(this.getClass().getResource("/ms.png")).getImage();

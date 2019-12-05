@@ -9,6 +9,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.UIManager;
 import java.awt.Font;
@@ -25,6 +27,7 @@ public class LoginPage extends JFrame {
 	private JTextField txtNj;
 	private JTextField textField_2;
 	private JPasswordField passwordField;
+	private ProductOperationsDB productOperationsDB = new ProductOperationsDB();
 
 	/**
 	 * Launch the application.
@@ -85,13 +88,27 @@ public class LoginPage extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
+		
 		
 		JButton btnLogin = new JButton("SignIn");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Inside ins = new Inside();
-			   setVisible(false);
-				ins.setVisible(true);
+				
+				String username = txtNj.getText();
+				String password = new String(passwordField.getPassword());
+				boolean loginSuccess = productOperationsDB.login(username, password);
+				
+				if(loginSuccess) {
+					
+					Inside inside = new Inside();
+					inside.setVisible(true);
+					setVisible(false);
+				}
+				else {
+					
+					JOptionPane.showMessageDialog(null, "Username or Password incorrect.");
+				}
 							
 							}
 		});
@@ -132,7 +149,7 @@ public class LoginPage extends JFrame {
 		contentPane.add(lblBruteforceControl);
 		
 		JLabel lblSunIcon = new JLabel("");
-		Image img = new ImageIcon(this.getClass().getResource("/cafe.png")).getImage();
+		Image img = new ImageIcon(this.getClass().getResource("/Cafe.png")).getImage();
 		lblSunIcon.setIcon(new ImageIcon(img)); 
 		lblSunIcon.setBounds(491, -31, 300, 373);
 		contentPane.add(lblSunIcon);

@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -25,6 +26,7 @@ public class SignUp extends JFrame {
 	private JLabel lblPassword;
 	private JLabel lblRepassword;
 	private JLabel lblEmail;
+	private ProductOperationsDB productOperationsDB = new ProductOperationsDB();
 
 	/**
 	 * Launch the application.
@@ -53,6 +55,7 @@ public class SignUp extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		Image img = new ImageIcon(this.getClass().getResource("/newest.png")).getImage();
 		
@@ -81,9 +84,24 @@ public class SignUp extends JFrame {
 		btnNewButton.setFont(new Font("Rockwell", Font.BOLD, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LoginPage li = new LoginPage();
-				   setVisible(false);
-					li.setVisible(true);
+				
+				String username = textField.getText();
+				String password = textField_1.getText();
+				String rePassword = textField_2.getText();
+				String email = textField_3.getText();
+				
+				if(password.equals(rePassword)){
+					
+					productOperationsDB.addAdmin(username, password, email);
+					LoginPage login = new LoginPage();
+					login.setVisible(true);
+					setVisible(false);
+				}
+				else {
+					
+					JOptionPane.showMessageDialog(null, "You must fill all the field correct!");
+				}
+				
 			}
 		});
 		btnNewButton.setBounds(349, 240, 103, 48);

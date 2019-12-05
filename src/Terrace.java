@@ -43,6 +43,7 @@ public class Terrace extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 		Image img = new ImageIcon(this.getClass().getResource("/Terrace.png")).getImage();
 		
 		JButton btnNewButton = new JButton("T-1");

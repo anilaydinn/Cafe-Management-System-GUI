@@ -53,6 +53,6 @@ public class Beverages extends Products {
 	@Override
 	public String toString() {
 		
-		return "Name: " + getName() + " Quantity: " + getQuantity() + " Mililiter: " + getMililiter() + " Alcohol: " + getIsAlcohol() + " Price: " + getPrice(); 
+		return "Name: " + getName() + " Quantity: " + Products.quantity + " Mililiter: " + getMililiter() + " Alcohol: " + getIsAlcohol() + " Price: " + getPrice(); 
 	}
 }
