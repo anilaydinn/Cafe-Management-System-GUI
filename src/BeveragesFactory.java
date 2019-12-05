@@ -1,5 +1,5 @@
 
-public class BeveragesFactory extends ProductFacctory {
+public class BeveragesFactory extends ProductFactory {
 
 	@Override
 	public Products getProducts() {

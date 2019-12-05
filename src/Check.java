@@ -2,17 +2,17 @@ import java.util.ArrayList;
 
 public class Check {
 
-	 private ArrayList<IProducts> products = new ArrayList<IProducts>();
+	 private ArrayList<Products> products = new ArrayList<Products>();
 	 private double totalPrice;
 	 
-	 public void addCheck(IProducts product) {
+	 public void addCheck(Products product) {
 		 
 		 this.products.add(product);
 	 }
 	 
 	 public double getTotalPrice() {
 		 
-		 for(IProducts product : products) {
+		 for(Products product : products) {
 			 
 			 this.totalPrice += product.getQuantity() * product.getPrice(); 
 		 }
@@ -22,7 +22,7 @@ public class Check {
 	 
 	 public void showProducts() {
 		 
-		 for(IProducts product : products) {
+		 for(Products product : products) {
 			 
 			 System.out.println(product);
 		 }

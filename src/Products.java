@@ -1,4 +1,3 @@
-import java.util.Iterator;
 
 public abstract class Products implements Cloneable, Comparable<Products>{
 
@@ -69,4 +68,6 @@ public abstract class Products implements Cloneable, Comparable<Products>{
 		
 		return (Products)super.clone();
 	}
+	
+	public abstract String toString();
 }

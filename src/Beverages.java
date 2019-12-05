@@ -1,86 +1,40 @@
 
-public class Beverages implements IProducts {
+public class Beverages extends Products {
 
-	private String name;
 	private int mililiter;
-	private int quantity;
 	private boolean isAlcohol;
-	private double price;
 	
-	public Beverages(String name, int mililiter, boolean isAlcohol, double price) {
+	public Beverages(String name, int quantity, int mililiter, boolean isAlcohol, double price) {
 		
-		this.name = name;
+		super(name,quantity,price);
 		this.mililiter = mililiter;
 		this.isAlcohol = isAlcohol;
-		this.price = price;
 	}
 	
 	public Beverages() {
 		
-		this.name = "";
-		this.mililiter = 0;
 		this.isAlcohol = false;
-		this.price = 0.0;
-	}
-	
-	public double getPrice() {
-		
-		return this.price;
+		this.mililiter = 0; 
 	}
 
-	@Override
-	public void setName(String name) {
-		
-		this.name = name;
-	}
-
-	@Override
-	public void setGram(int gram) {
-		
-		//Empty
-	}
-
-	@Override
-	public String toString() {
-		return "Beverages Name: " + this.name + " Mililiter: " + this.mililiter + " Quantity: " + this.quantity + " Alcohol: " + getIsAlcohol(isAlcohol) + " Price: " + this.price;
-	}
-
-	@Override
-	public void setQuantity(int quantity) {
-		
-		this.quantity = quantity;
-	}
-
-	@Override
-	public void setPrice(double price) {
-		
-		this.price = price;
-	}
-
-	@Override
 	public void setMililiter(int mililiter) {
 		
 		this.mililiter = mililiter;
 	}
+	
+	public int getMililiter() {
+		
+		return this.mililiter;
+	}
 
-	@Override
 	public void setIsAlcohol(boolean isAlcohol) {
 		
 		this.isAlcohol = isAlcohol;
 	}
 
-	@Override
-	public int getQuantity() {
+	public String getIsAlcohol() {
 		
-		return this.quantity;
-	}
-
-	@Override
-	public String getIsAlcohol(boolean isAlcohol) {
-		
-		isAlcohol = this.isAlcohol;
-		
-		if(isAlcohol == true) {
+		if(this.isAlcohol == true) {
 			
 			return "✓";
 		}
@@ -88,5 +42,17 @@ public class Beverages implements IProducts {
 			
 			return "x";
 		}
+	}
+
+	@Override
+	public Products clone() throws CloneNotSupportedException {
+		
+		return (Beverages)super.clone();
+	}
+
+	@Override
+	public String toString() {
+		
+		return "Name: " + getName() + " Quantity: " + getQuantity() + " Mililiter: " + getMililiter() + " Alcohol: " + getIsAlcohol() + " Price: " + getPrice(); 
 	}
 }
