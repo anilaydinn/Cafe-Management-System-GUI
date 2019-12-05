@@ -86,16 +86,18 @@ public class LoginPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnLogin = new JButton("Login");
+		JButton btnLogin = new JButton("SignIn");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Inside ins = new Inside();
+			   setVisible(false);
+				ins.setVisible(true);
 							
 							}
 		});
 		btnLogin.setFont(new Font("Rockwell", Font.BOLD, 18));
-		btnLogin.setBackground(UIManager.getColor("TextField.selectionBackground"));
-		btnLogin.setBounds(283, 428, 110, 47);
+		btnLogin.setBackground(new Color(255, 255, 255));
+		btnLogin.setBounds(280, 429, 110, 47);
 		contentPane.add(btnLogin);
 		
 		txtNj = new JTextField();
@@ -140,6 +142,20 @@ public class LoginPage extends JFrame {
 		labelCheck.setIcon(new ImageIcon(img1)); 
 		labelCheck.setBounds(329, 356, 61, 47);
 		contentPane.add(labelCheck);
+		
+		JButton btnSignup = new JButton("SignUp");
+		btnSignup.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SignUp su = new SignUp();
+				   setVisible(false);
+					su.setVisible(true);
+				
+			}
+		});
+		btnSignup.setFont(new Font("Rockwell", Font.BOLD, 18));
+		btnSignup.setBackground(Color.WHITE);
+		btnSignup.setBounds(409, 429, 110, 47);
+		contentPane.add(btnSignup);
 		
 	}
 }

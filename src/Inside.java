@@ -132,6 +132,9 @@ public class Inside extends JFrame {
 		JButton btnNewButton_1 = new JButton("Door To Garden");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Garden gar = new Garden();
+				   setVisible(false);
+					gar.setVisible(true);
 			}
 		});
 		btnNewButton_1.setForeground(Color.WHITE);
@@ -142,6 +145,9 @@ public class Inside extends JFrame {
 		JButton btnTerrace = new JButton("Terrace");
 		btnTerrace.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			Terrace ter = new Terrace();
+				   setVisible(false);
+					ter.setVisible(true);
 				
 			}
 		});

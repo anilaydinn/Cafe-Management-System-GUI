@@ -114,6 +114,13 @@ public class Garden extends JFrame {
 		contentPane.add(btnGspeacial);
 		
 		JButton btnNewButton_1 = new JButton("Door");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				Inside ins = new Inside();
+				ins.setVisible(true);
+			}
+		});
 		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.setFont(new Font("Rockwell", Font.BOLD, 13));
 		btnNewButton_1.setBackground(new Color(102, 0, 0));

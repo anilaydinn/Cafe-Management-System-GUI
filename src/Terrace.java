@@ -96,7 +96,9 @@ public class Terrace extends JFrame {
 		JButton btnNewButton_1 = new JButton("Door");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+				setVisible(false);
+				Inside ins = new Inside();
+				ins.setVisible(true);
 			
 			}
 		});
