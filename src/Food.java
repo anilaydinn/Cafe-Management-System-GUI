@@ -5,7 +5,7 @@ public class Food extends Products {
 	
 	public Food(String name, int quantity, int gram, double price) {
 		
-		super(name,quantity,price);
+		super(name,price);
 		this.gram = gram;
 	}
 	
@@ -33,6 +33,6 @@ public class Food extends Products {
 	@Override
 	public String toString() {
 		
-		return "Name: " + getName() + " Quantity: " + Products.quantity + " Gram: " + getGram() + " Price: " + getPrice();
+		return "Name: " + getName() + " Gram: " + getGram() + " Price: " + getPrice();
 	}
 }

@@ -1,34 +1,38 @@
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
 
 public class Check {
 
-	 private LinkedList<Products> products = new LinkedList<Products>();
+	 private ArrayList<Products> products = new ArrayList<Products>();
 	 private double totalPrice;
-	 private String paymentMethod;
-	 private String responsible;
 	 
+	 public Check() {
+		 
+		 removeAll();
+	 }
 	 
 	 public void addCheck(Products product) {
 		 
 		 this.products.add(product);
 	 }
-	 /*
-	 public double getTotalPrice() {
+	 
+	 public void calcTotalPrice() {
 		 
 		 for(Products product : products) {
 			 
-			 this.totalPrice += product.quantity * product.getPrice(); 
+			 this.totalPrice += product.getPrice(); 
 		 }
+		 
+	 }
+	 
+	 public double getTotalPrice() {
 		 
 		 return this.totalPrice;
 	 }
-	 */
 	 
+	 public void setTotalPrice(double totalPrice) {
+		 
+		 this.totalPrice = totalPrice;
+	 }
 	 
 	 public void showProducts() {
 		 
@@ -38,27 +42,15 @@ public class Check {
 		 }
 	 }
 	 
-	 public void setResponsible(String responsible) {
+	 public void removeAll() {
 		 
-		 this.responsible = responsible;
+		 for(int i = 0; i < products.size(); i++) {
+			 
+			 products.remove(i);
+		 }
 	 }
 	 
-	 public String getResponsible() {
-		 
-		 return this.responsible;
-	 }
-	 
-	 public void setPaymentMethod(String paymentMethod) {
-		 
-		 this.paymentMethod = paymentMethod;
-	 }
-	 
-	 public String getPaymentMethod() {
-		 
-		 return this.paymentMethod;
-	 }
-	 
-	 public LinkedList<Products> getProducts(){
+	 public ArrayList<Products> getProducts(){
 		 
 		 return products;
 	 }

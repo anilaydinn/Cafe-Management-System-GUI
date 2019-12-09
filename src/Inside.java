@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
+import java.awt.Menu;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -18,26 +19,12 @@ public class Inside extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Inside frame = new Inside();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public Inside() {
+		setTitle("Inside");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 530);
 		contentPane = new JPanel();
@@ -45,6 +32,7 @@ public class Inside extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Image img = new ImageIcon(this.getClass().getResource("/Inside.png")).getImage();
 		
@@ -52,8 +40,9 @@ public class Inside extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				menu menu = new menu();
+				MenuPage menu = new MenuPage();
 				menu.setVisible(true);
+				menu.setTitle("I-1");
 			}
 		});
 		btnNewButton.setForeground(new Color(245, 245, 245));
@@ -66,8 +55,9 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				menu menu = new menu();
+				MenuPage menu = new MenuPage();
 				menu.setVisible(true);
+				menu.setTitle("I-2");
 			}
 		});
 		button.setForeground(new Color(245, 245, 245));
@@ -80,8 +70,9 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				menu menu = new menu();
+				MenuPage menu = new MenuPage();
 				menu.setVisible(true);
+				menu.setTitle("I-3");
 			}
 		});
 		button_1.setForeground(new Color(245, 245, 245));
@@ -94,8 +85,9 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				menu menu = new menu();
+				MenuPage menu = new MenuPage();
 				menu.setVisible(true);
+				menu.setTitle("I-4");
 			}
 		});
 		button_2.setForeground(new Color(245, 245, 245));
@@ -108,8 +100,9 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				menu menu = new menu();
+				MenuPage menu = new MenuPage();
 				menu.setVisible(true);
+				menu.setTitle("I-5");
 			}
 		});
 		button_3.setForeground(new Color(245, 245, 245));
@@ -122,8 +115,9 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				menu menu = new menu();
+				MenuPage menu = new MenuPage();
 				menu.setVisible(true);
+				menu.setTitle("I-6");
 			}
 		});
 		button_4.setForeground(new Color(245, 245, 245));
@@ -136,8 +130,9 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				menu menu = new menu();
+				MenuPage menu = new MenuPage();
 				menu.setVisible(true);
+				menu.setTitle("I-7");
 			}
 		});
 		button_5.setForeground(new Color(245, 245, 245));
@@ -150,8 +145,9 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				menu menu = new menu();
+				MenuPage menu = new MenuPage();
 				menu.setVisible(true);
+				menu.setTitle("I-8");
 			}
 		});
 		button_6.setForeground(new Color(245, 245, 245));
@@ -164,8 +160,9 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				menu menu = new menu();
+				MenuPage menu = new MenuPage();
 				menu.setVisible(true);
+				menu.setTitle("I-9");
 			}
 		});
 		button_7.setForeground(new Color(245, 245, 245));
@@ -178,8 +175,9 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				menu menu = new menu();
+				MenuPage menu = new MenuPage();
 				menu.setVisible(true);
+				menu.setTitle("I-10");
 			}
 		});
 		button_8.setForeground(new Color(245, 245, 245));
@@ -192,8 +190,9 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				menu menu = new menu();
+				MenuPage menu = new MenuPage();
 				menu.setVisible(true);
+				menu.setTitle("I-11");
 			}
 		});
 		button_9.setForeground(new Color(245, 245, 245));
@@ -206,8 +205,9 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				menu menu = new menu();
+				MenuPage menu = new MenuPage();
 				menu.setVisible(true);
+				menu.setTitle("I-12");
 			}
 		});
 		button_10.setForeground(new Color(245, 245, 245));
@@ -220,8 +220,9 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				menu menu = new menu();
+				MenuPage menu = new MenuPage();
 				menu.setVisible(true);
+				menu.setTitle("I-13");
 			}
 		});
 		button_11.setForeground(new Color(245, 245, 245));

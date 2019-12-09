@@ -33,36 +33,6 @@ public class LoginPage extends JFrame {
 	 * Launch the application.
 	 */
 	
-	
-	public static class robot{
-		private int a;
-		private int b;
-		public robot () {
-			this.a=a;
-			this.b=b;
-		}
-		public robot(int a,int b) {
-			this.a=a;
-			this.b=b;
-		}
-		public void setA(int a) {
-			this.a=a;
-			
-		}
-		public int getA() {
-			return this.a;
-		}
-		public void setB(int b) {
-			this.b=b;
-			
-		}
-		public int getB() {
-			return this.b;
-		}
-		
-		
-	}
-	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -89,6 +59,7 @@ public class LoginPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
 		JButton btnLogin = new JButton("SignIn");

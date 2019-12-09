@@ -21,22 +21,6 @@ public class Garden extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Garden frame = new Garden();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public Garden() {
@@ -47,6 +31,7 @@ public class Garden extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 650);
 		Image img = new ImageIcon(this.getClass().getResource("/garden.png")).getImage();
 		Image img1 = new ImageIcon(this.getClass().getResource("/ms.png")).getImage();
@@ -56,6 +41,16 @@ public class Garden extends JFrame {
 		btnNewButton.setBackground(Color.MAGENTA);
 		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.setBounds(59, 157, 123, 61);
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				MenuPage menu = new MenuPage();
+				menu.setVisible(true);
+				menu.setTitle("G-2");
+			}
+		});
 		contentPane.add(btnNewButton);
 		
 		JButton btnTable = new JButton("G-1");
@@ -63,6 +58,16 @@ public class Garden extends JFrame {
 		btnTable.setFont(new Font("Rockwell", Font.BOLD, 13));
 		btnTable.setBackground(Color.MAGENTA);
 		btnTable.setBounds(59, 74, 123, 61);
+		btnTable.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				MenuPage menu = new MenuPage();
+				menu.setVisible(true);
+				menu.setTitle("G-1");
+			}
+		});
 		contentPane.add(btnTable);
 		
 		JButton btnG = new JButton("G-3");
@@ -70,6 +75,16 @@ public class Garden extends JFrame {
 		btnG.setFont(new Font("Rockwell", Font.BOLD, 13));
 		btnG.setBackground(Color.MAGENTA);
 		btnG.setBounds(59, 239, 123, 61);
+		btnG.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				MenuPage menu = new MenuPage();
+				menu.setVisible(true);
+				menu.setTitle("G-3");
+			}
+		});
 		contentPane.add(btnG);
 		
 		JButton btnG_1 = new JButton("G-4");
@@ -77,6 +92,16 @@ public class Garden extends JFrame {
 		btnG_1.setFont(new Font("Rockwell", Font.BOLD, 13));
 		btnG_1.setBackground(Color.MAGENTA);
 		btnG_1.setBounds(59, 318, 123, 61);
+		btnG_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				MenuPage menu = new MenuPage();
+				menu.setVisible(true);
+				menu.setTitle("G-4");
+			}
+		});
 		contentPane.add(btnG_1);
 		
 		JButton btnG_2 = new JButton("G-5");
@@ -84,6 +109,16 @@ public class Garden extends JFrame {
 		btnG_2.setFont(new Font("Rockwell", Font.BOLD, 13));
 		btnG_2.setBackground(Color.MAGENTA);
 		btnG_2.setBounds(59, 395, 123, 61);
+		btnG_2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				MenuPage menu = new MenuPage();
+				menu.setVisible(true);
+				menu.setTitle("G-5");
+			}
+		});
 		contentPane.add(btnG_2);
 		
 		JButton btnG_3 = new JButton("G-6");
@@ -91,6 +126,16 @@ public class Garden extends JFrame {
 		btnG_3.setFont(new Font("Rockwell", Font.BOLD, 13));
 		btnG_3.setBackground(Color.MAGENTA);
 		btnG_3.setBounds(371, 295, 123, 61);
+		btnG_3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				MenuPage menu = new MenuPage();
+				menu.setVisible(true);
+				menu.setTitle("G-6");
+			}
+		});
 		contentPane.add(btnG_3);
 		
 		JButton btnG_4 = new JButton("G-7");
@@ -98,6 +143,16 @@ public class Garden extends JFrame {
 		btnG_4.setFont(new Font("Rockwell", Font.BOLD, 13));
 		btnG_4.setBackground(Color.MAGENTA);
 		btnG_4.setBounds(371, 379, 123, 61);
+		btnG_4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				MenuPage menu = new MenuPage();
+				menu.setVisible(true);
+				menu.setTitle("G-7");
+			}
+		});
 		contentPane.add(btnG_4);
 		
 		JButton btnVp = new JButton("VIP-2");
@@ -105,6 +160,16 @@ public class Garden extends JFrame {
 		btnVp.setFont(new Font("Rockwell", Font.BOLD, 13));
 		btnVp.setBackground(new Color(204, 255, 0));
 		btnVp.setBounds(428, 167, 123, 61);
+		btnVp.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				MenuPage menu = new MenuPage();
+				menu.setVisible(true);
+				menu.setTitle("VIP-2");
+			}
+		});
 		contentPane.add(btnVp);
 		
 		JButton btnGspeacial = new JButton("VIP-1");
@@ -112,6 +177,16 @@ public class Garden extends JFrame {
 		btnGspeacial.setFont(new Font("Rockwell", Font.BOLD, 13));
 		btnGspeacial.setBackground(new Color(204, 255, 0));
 		btnGspeacial.setBounds(428, 87, 123, 61);
+		btnGspeacial.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				MenuPage menu = new MenuPage();
+				menu.setVisible(true);
+				menu.setTitle("VIP-1");
+			}
+		});
 		contentPane.add(btnGspeacial);
 		
 		JButton btnNewButton_1 = new JButton("Door");

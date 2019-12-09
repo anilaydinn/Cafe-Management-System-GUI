@@ -29,23 +29,6 @@ public class SignUp extends JFrame {
 	private ProductOperationsDB productOperationsDB = new ProductOperationsDB();
 
 	/**
-	 * Launch the application.
-	 */
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SignUp frame = new SignUp();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public SignUp() {
@@ -56,6 +39,7 @@ public class SignUp extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Image img = new ImageIcon(this.getClass().getResource("/newest.png")).getImage();
 		

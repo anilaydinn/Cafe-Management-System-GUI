@@ -1,4 +1,4 @@
-import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -6,15 +6,15 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import javax.swing.JList;
 
-public class menu extends JFrame {
+public class MenuPage extends JFrame {
 
 	private JPanel contentPane;
 	private Check check;
@@ -22,26 +22,9 @@ public class menu extends JFrame {
 	private ProductFactory beveragesFactory;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					menu frame = new menu();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
-	public menu() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public MenuPage() {
 		setBounds(100, 100, 450, 563);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -51,12 +34,11 @@ public class menu extends JFrame {
 		check = new Check();
 		foodFactory = new FoodFactory();
 		beveragesFactory = new BeveragesFactory();
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+		
 		
 		Image img = new ImageIcon(this.getClass().getResource("/menu2.png")).getImage();
-		
-		JList list = new JList();
-		list.setBounds(204, 471, 208, -456);
-		contentPane.add(list);
 		
 		JButton btnWaterml = new JButton("Water(500ml)(2$)");
 		btnWaterml.addActionListener(new ActionListener() {
@@ -71,8 +53,8 @@ public class menu extends JFrame {
 				beverages.setPrice(2.0);
 				beverages.setIsAlcohol(false);
 				
-				check.addCheck(beverages);
 				
+				check.addCheck(beverages);
 				check.showProducts();
 			}
 		});
@@ -92,8 +74,9 @@ public class menu extends JFrame {
 				beverages.setMililiter(330);
 				beverages.setPrice(5.00);
 				beverages.setIsAlcohol(false);
-				check.addCheck(beverages);
 				
+				check.addCheck(beverages);
+				check.showProducts();
 			}
 		});
 		btnCokeml.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -112,8 +95,9 @@ public class menu extends JFrame {
 				beverages.setMililiter(100);
 				beverages.setPrice(3);
 				beverages.setIsAlcohol(false);
-			    check.addCheck(beverages);
-			    check.showProducts();
+			    
+				check.addCheck(beverages);
+				check.showProducts();
 			}
 		});
 		btnTeaml.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -132,6 +116,7 @@ public class menu extends JFrame {
 				beverages.setMililiter(500);
 				beverages.setPrice(15.0);
 				beverages.setIsAlcohol(true);
+				
 				check.addCheck(beverages);
 				check.showProducts();
 			}
@@ -152,6 +137,7 @@ public class menu extends JFrame {
 				beverages.setMililiter(270);
 				beverages.setPrice(7.0);
 				beverages.setIsAlcohol(false);
+				
 				check.addCheck(beverages);
 				check.showProducts();
 			}
@@ -171,6 +157,7 @@ public class menu extends JFrame {
 				food.setName("Donner");
 				food.setGram(120);
 				food.setPrice(22.0);
+				
 				check.addCheck(food);
 				check.showProducts();
 			}
@@ -190,6 +177,7 @@ public class menu extends JFrame {
 				food.setName("Soup");
 				food.setGram(150);
 				food.setPrice(7.0);
+				
 				check.addCheck(food);
 				check.showProducts();
 			}
@@ -209,6 +197,7 @@ public class menu extends JFrame {
 				food.setName("Wrap");
 				food.setGram(220);
 				food.setPrice(14.0);
+				
 				check.addCheck(food);
 				check.showProducts();
 			}
@@ -228,6 +217,7 @@ public class menu extends JFrame {
 				food.setName("MeatBall");
 				food.setGram(300);
 				food.setPrice(35.0);
+				
 				check.addCheck(food);
 				check.showProducts();
 			}
@@ -247,6 +237,7 @@ public class menu extends JFrame {
 				food.setName("Burger");
 				food.setGram(350);
 				food.setPrice(20.0);
+				
 				check.addCheck(food);
 				check.showProducts();
 			}
@@ -266,6 +257,7 @@ public class menu extends JFrame {
 				food.setName("Salad");
 				food.setGram(180);
 				food.setPrice(12.0);
+				
 				check.addCheck(food);
 				check.showProducts();
 			}
