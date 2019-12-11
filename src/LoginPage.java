@@ -82,11 +82,11 @@ public class LoginPage extends JFrame {
 					inside.setVisible(true);
 					setVisible(false);
 				}
-				else if(chckbxBruteForce.isSelected() != true) {
+				else if(chckbxBruteForce.isSelected() == false) {
 					
 					JOptionPane.showMessageDialog(null, "Please prove you are human!");
 				}
-				else {
+				else if(chckbxBruteForce.isSelected() == true && loginSuccess == false){
 				
 					JOptionPane.showMessageDialog(null, "Username or Password incorrect.");
 				}

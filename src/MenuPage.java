@@ -10,6 +10,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -23,12 +24,13 @@ public class MenuPage extends JFrame {
 	private ProductFactory foodFactory;
 	private ProductFactory beveragesFactory;
 	private DefaultListModel<Products> listModel;
+	private ProductOperationsDB productOperationsDB = new ProductOperationsDB();
 
 	/**
 	 * Create the frame.
 	 */
 	public MenuPage() {
-		setBounds(100, 100, 623, 551);
+		setBounds(100, 100, 674, 573);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -46,8 +48,14 @@ public class MenuPage extends JFrame {
 		Image img = new ImageIcon(this.getClass().getResource("/menu2.png")).getImage();
 		
 		JList<Products> checkJList = new JList<Products>();
-		checkJList.setBounds(175, 19, 429, 429);
+		checkJList.setBounds(213, 13, 435, 460);
 		contentPane.add(checkJList);
+		
+		JLabel lblTotal = new JLabel("Total:");
+		lblTotal.setForeground(Color.YELLOW);
+		lblTotal.setFont(new Font("Dialog", Font.BOLD, 22));
+		lblTotal.setBounds(213, 485, 222, 46);
+		contentPane.add(lblTotal);
 		
 		JButton btnWaterml = new JButton("Water(500ml)(2$)");
 		btnWaterml.addActionListener(new ActionListener() {
@@ -70,12 +78,14 @@ public class MenuPage extends JFrame {
 				}
 				
 				checkJList.setModel(listModel);
+				check.calcTotalPrice();
+				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
 			}
 		});
 		btnWaterml.setBackground(new Color(255, 255, 0));
 		btnWaterml.setFont(new Font("Rockwell", Font.BOLD, 11));
-		btnWaterml.setBounds(12, 13, 151, 30);
+		btnWaterml.setBounds(12, 13, 189, 30);
 		contentPane.add(btnWaterml);
 				
 		JButton btnCokeml = new JButton("Coke(330ml)(5$)");
@@ -98,12 +108,14 @@ public class MenuPage extends JFrame {
 				}
 				
 				checkJList.setModel(listModel);
+				check.calcTotalPrice();
+				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
 			}
 		});
 		btnCokeml.setFont(new Font("Rockwell", Font.BOLD, 11));
 		btnCokeml.setBackground(new Color(255, 255, 0));
-		btnCokeml.setBounds(12, 56, 151, 30);
+		btnCokeml.setBounds(12, 56, 189, 30);
 		contentPane.add(btnCokeml);
 				
 		JButton btnTeaml = new JButton("Tea(100ml)(3$)");
@@ -126,12 +138,14 @@ public class MenuPage extends JFrame {
 				}
 				
 				checkJList.setModel(listModel);
+				check.calcTotalPrice();
+				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
 			}
 		});
 		btnTeaml.setFont(new Font("Rockwell", Font.BOLD, 11));
 		btnTeaml.setBackground(new Color(255, 255, 0));
-		btnTeaml.setBounds(12, 99, 151, 30);
+		btnTeaml.setBounds(12, 99, 189, 30);
 		contentPane.add(btnTeaml);
 				
 		JButton btnml = new JButton("Beer(500ml)(15$)");
@@ -154,12 +168,14 @@ public class MenuPage extends JFrame {
 				}
 				
 				checkJList.setModel(listModel);
+				check.calcTotalPrice();
+				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
 			}
 		});
 		btnml.setFont(new Font("Rockwell", Font.BOLD, 11));
 		btnml.setBackground(new Color(255, 255, 0));
-		btnml.setBounds(12, 142, 151, 30);
+		btnml.setBounds(12, 142, 189, 30);
 		contentPane.add(btnml);
 				
 		JButton btnCoffeeml = new JButton("Coffee(270ml)(7$)");
@@ -182,12 +198,14 @@ public class MenuPage extends JFrame {
 				}
 				
 				checkJList.setModel(listModel);
+				check.calcTotalPrice();
+				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
 			}
 		});
 		btnCoffeeml.setFont(new Font("Rockwell", Font.BOLD, 11));
 		btnCoffeeml.setBackground(new Color(255, 255, 0));
-		btnCoffeeml.setBounds(12, 185, 151, 30);
+		btnCoffeeml.setBounds(12, 185, 189, 30);
 		contentPane.add(btnCoffeeml);
 						
 		JButton btnDonner = new JButton("Donner(120gr)(22$)");
@@ -209,12 +227,14 @@ public class MenuPage extends JFrame {
 				}
 				
 				checkJList.setModel(listModel);
+				check.calcTotalPrice();
+				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
 			}
 		});
 		btnDonner.setFont(new Font("Rockwell", Font.BOLD, 11));
 		btnDonner.setBackground(new Color(255, 228, 225));
-		btnDonner.setBounds(12, 400, 151, 30);
+		btnDonner.setBounds(12, 400, 189, 30);
 		contentPane.add(btnDonner);
 						
 		JButton btnSoupgr = new JButton("Soup(150gr)(7$)");
@@ -236,12 +256,14 @@ public class MenuPage extends JFrame {
 				}
 				
 				checkJList.setModel(listModel);
+				check.calcTotalPrice();
+				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
 			}
 		});
 		btnSoupgr.setFont(new Font("Rockwell", Font.BOLD, 11));
 		btnSoupgr.setBackground(new Color(255, 228, 225));
-		btnSoupgr.setBounds(12, 357, 151, 30);
+		btnSoupgr.setBounds(12, 357, 189, 30);
 		contentPane.add(btnSoupgr);
 						
 		JButton btnWaterml_1 = new JButton("Wrap(220gr)(14$)");
@@ -263,12 +285,14 @@ public class MenuPage extends JFrame {
 				}
 				
 				checkJList.setModel(listModel);
+				check.calcTotalPrice();
+				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
 			}
 		});
 		btnWaterml_1.setFont(new Font("Rockwell", Font.BOLD, 11));
 		btnWaterml_1.setBackground(new Color(255, 228, 225));
-		btnWaterml_1.setBounds(12, 314, 151, 30);
+		btnWaterml_1.setBounds(12, 314, 189, 30);
 		contentPane.add(btnWaterml_1);
 						
 		JButton btnWater = new JButton("MeatBall(300gr)(35$)");
@@ -290,12 +314,14 @@ public class MenuPage extends JFrame {
 				}
 				
 				checkJList.setModel(listModel);
+				check.calcTotalPrice();
+				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
 			}
 		});
 		btnWater.setFont(new Font("Rockwell", Font.BOLD, 11));
 		btnWater.setBackground(new Color(255, 228, 225));
-		btnWater.setBounds(12, 271, 151, 30);
+		btnWater.setBounds(12, 271, 189, 30);
 		contentPane.add(btnWater);
 						
 		JButton btnHamburgergr = new JButton("Burger(350gr)(20$)");
@@ -317,12 +343,14 @@ public class MenuPage extends JFrame {
 				}
 				
 				checkJList.setModel(listModel);
+				check.calcTotalPrice();
+				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
 			}
 		});
 		btnHamburgergr.setFont(new Font("Rockwell", Font.BOLD, 11));
 		btnHamburgergr.setBackground(new Color(255, 228, 225));
-		btnHamburgergr.setBounds(12, 228, 151, 30);
+		btnHamburgergr.setBounds(12, 228, 189, 30);
 		contentPane.add(btnHamburgergr);
 								
 		JButton btnDonner_1 = new JButton("Salad(180gr)(12$)");
@@ -344,12 +372,14 @@ public class MenuPage extends JFrame {
 				}
 				
 				checkJList.setModel(listModel);
+				check.calcTotalPrice();
+				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
 			}
 		});
 		btnDonner_1.setFont(new Font("Rockwell", Font.BOLD, 11));
 		btnDonner_1.setBackground(new Color(255, 228, 225));
-		btnDonner_1.setBounds(12, 443, 151, 30);
+		btnDonner_1.setBounds(12, 443, 189, 30);
 		contentPane.add(btnDonner_1);
 		
 		JButton btnSaveChecks = new JButton("Save");
@@ -363,23 +393,20 @@ public class MenuPage extends JFrame {
 						Food food;
 						food = (Food)checkJList.getModel().getElementAt(i);
 						
-						System.out.println(food.getName() + " " + food.getPrice() + " " + food.getGram());
+						productOperationsDB.addChecks(getTitle(), food.toString(), food.getPrice());
 					}
-					else {
+					else if(checkJList.getModel().getElementAt(i) instanceof Beverages) {
 						
 						Beverages beverages;
 						beverages = (Beverages)checkJList.getModel().getElementAt(i);
 						
-						System.out.println(beverages.getName() + " " + beverages.getPrice() + " " + beverages.getMililiter() + " " + beverages.getIsAlcohol());
+						productOperationsDB.addChecks(getTitle(), beverages.toString(), beverages.getPrice());
 					}
 				}
 			}
 		});
-		btnSaveChecks.setBounds(469, 460, 135, 47);
-		contentPane.add(btnSaveChecks);
-		
-		
-										
+		btnSaveChecks.setBounds(513, 485, 135, 47);
+		contentPane.add(btnSaveChecks);								
 		
 	}
 }

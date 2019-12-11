@@ -77,7 +77,7 @@ public class ProductOperationsDB {
 	
 	public void addChecks(String table_name, String contains, double price) {
 		
-		String query = "INSERT INTO Checks (table_name, contains, price) VALUES (?, ?, ?, ?)";
+		String query = "INSERT INTO Checks (table_name, contains, price) VALUES (?, ?, ?)";
 		
 		try {
 			
