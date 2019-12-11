@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 public class ProductOperationsDB {
 
@@ -76,18 +75,17 @@ public class ProductOperationsDB {
 		}
 	}
 	
-	public void addChecks(String contains, String responsible, double price, String paymentMethod) {
+	public void addChecks(String table_name, String contains, double price) {
 		
-		String query = "INSERT INTO Checks (contains, responsible, price, payment_method) VALUES (?, ?, ?, ?)";
+		String query = "INSERT INTO Checks (table_name, contains, price) VALUES (?, ?, ?, ?)";
 		
 		try {
 			
 			preparedStatement = con.prepareStatement(query);
 			
-			preparedStatement.setString(1, contains);
-			preparedStatement.setString(2, responsible);
+			preparedStatement.setString(1, table_name);
+			preparedStatement.setString(2, contains);
 			preparedStatement.setDouble(3, price);
-			preparedStatement.setString(4, paymentMethod);
 			
 			preparedStatement.executeUpdate();
 		}catch(SQLException e) {

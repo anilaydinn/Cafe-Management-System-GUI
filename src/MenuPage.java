@@ -6,13 +6,15 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.UIManager;
 
 public class MenuPage extends JFrame {
 
@@ -20,25 +22,32 @@ public class MenuPage extends JFrame {
 	private Check check;
 	private ProductFactory foodFactory;
 	private ProductFactory beveragesFactory;
+	private DefaultListModel<Products> listModel;
 
 	/**
 	 * Create the frame.
 	 */
 	public MenuPage() {
-		setBounds(100, 100, 450, 563);
+		setBounds(100, 100, 623, 551);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		contentPane.setBackground(UIManager.getColor("RadioButtonMenuItem.acceleratorForeground"));
 		setLocationRelativeTo(null);
 		check = new Check();
 		foodFactory = new FoodFactory();
 		beveragesFactory = new BeveragesFactory();
+		listModel = new DefaultListModel<Products>();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		
 		
 		Image img = new ImageIcon(this.getClass().getResource("/menu2.png")).getImage();
+		
+		JList<Products> checkJList = new JList<Products>();
+		checkJList.setBounds(175, 19, 429, 429);
+		contentPane.add(checkJList);
 		
 		JButton btnWaterml = new JButton("Water(500ml)(2$)");
 		btnWaterml.addActionListener(new ActionListener() {
@@ -53,9 +62,15 @@ public class MenuPage extends JFrame {
 				beverages.setPrice(2.0);
 				beverages.setIsAlcohol(false);
 				
-				
 				check.addCheck(beverages);
-				check.showProducts();
+				
+				for(int i = 0; i < check.getProducts().size(); i++) {
+					
+					listModel.addElement(check.getProducts().get(i));
+				}
+				
+				checkJList.setModel(listModel);
+				check.removeAll();
 			}
 		});
 		btnWaterml.setBackground(new Color(255, 255, 0));
@@ -76,7 +91,14 @@ public class MenuPage extends JFrame {
 				beverages.setIsAlcohol(false);
 				
 				check.addCheck(beverages);
-				check.showProducts();
+				
+				for(int i = 0; i < check.getProducts().size(); i++) {
+					
+					listModel.addElement(check.getProducts().get(i));
+				}
+				
+				checkJList.setModel(listModel);
+				check.removeAll();
 			}
 		});
 		btnCokeml.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -97,7 +119,14 @@ public class MenuPage extends JFrame {
 				beverages.setIsAlcohol(false);
 			    
 				check.addCheck(beverages);
-				check.showProducts();
+				
+				for(int i = 0; i < check.getProducts().size(); i++) {
+					
+					listModel.addElement(check.getProducts().get(i));
+				}
+				
+				checkJList.setModel(listModel);
+				check.removeAll();
 			}
 		});
 		btnTeaml.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -118,7 +147,14 @@ public class MenuPage extends JFrame {
 				beverages.setIsAlcohol(true);
 				
 				check.addCheck(beverages);
-				check.showProducts();
+
+				for(int i = 0; i < check.getProducts().size(); i++) {
+					
+					listModel.addElement(check.getProducts().get(i));
+				}
+				
+				checkJList.setModel(listModel);
+				check.removeAll();
 			}
 		});
 		btnml.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -139,7 +175,14 @@ public class MenuPage extends JFrame {
 				beverages.setIsAlcohol(false);
 				
 				check.addCheck(beverages);
-				check.showProducts();
+				
+				for(int i = 0; i < check.getProducts().size(); i++) {
+					
+					listModel.addElement(check.getProducts().get(i));
+				}
+				
+				checkJList.setModel(listModel);
+				check.removeAll();
 			}
 		});
 		btnCoffeeml.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -159,7 +202,14 @@ public class MenuPage extends JFrame {
 				food.setPrice(22.0);
 				
 				check.addCheck(food);
-				check.showProducts();
+				
+				for(int i = 0; i < check.getProducts().size(); i++) {
+					
+					listModel.addElement(check.getProducts().get(i));
+				}
+				
+				checkJList.setModel(listModel);
+				check.removeAll();
 			}
 		});
 		btnDonner.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -179,7 +229,14 @@ public class MenuPage extends JFrame {
 				food.setPrice(7.0);
 				
 				check.addCheck(food);
-				check.showProducts();
+				
+				for(int i = 0; i < check.getProducts().size(); i++) {
+					
+					listModel.addElement(check.getProducts().get(i));
+				}
+				
+				checkJList.setModel(listModel);
+				check.removeAll();
 			}
 		});
 		btnSoupgr.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -199,7 +256,14 @@ public class MenuPage extends JFrame {
 				food.setPrice(14.0);
 				
 				check.addCheck(food);
-				check.showProducts();
+				
+				for(int i = 0; i < check.getProducts().size(); i++) {
+					
+					listModel.addElement(check.getProducts().get(i));
+				}
+				
+				checkJList.setModel(listModel);
+				check.removeAll();
 			}
 		});
 		btnWaterml_1.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -219,7 +283,14 @@ public class MenuPage extends JFrame {
 				food.setPrice(35.0);
 				
 				check.addCheck(food);
-				check.showProducts();
+				
+				for(int i = 0; i < check.getProducts().size(); i++) {
+					
+					listModel.addElement(check.getProducts().get(i));
+				}
+				
+				checkJList.setModel(listModel);
+				check.removeAll();
 			}
 		});
 		btnWater.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -239,7 +310,14 @@ public class MenuPage extends JFrame {
 				food.setPrice(20.0);
 				
 				check.addCheck(food);
-				check.showProducts();
+				
+				for(int i = 0; i < check.getProducts().size(); i++) {
+					
+					listModel.addElement(check.getProducts().get(i));
+				}
+				
+				checkJList.setModel(listModel);
+				check.removeAll();
 			}
 		});
 		btnHamburgergr.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -259,20 +337,48 @@ public class MenuPage extends JFrame {
 				food.setPrice(12.0);
 				
 				check.addCheck(food);
-				check.showProducts();
+				
+				for(int i = 0; i < check.getProducts().size(); i++) {
+					
+					listModel.addElement(check.getProducts().get(i));
+				}
+				
+				checkJList.setModel(listModel);
+				check.removeAll();
 			}
 		});
 		btnDonner_1.setFont(new Font("Rockwell", Font.BOLD, 11));
 		btnDonner_1.setBackground(new Color(255, 228, 225));
 		btnDonner_1.setBounds(12, 443, 151, 30);
 		contentPane.add(btnDonner_1);
-								
-		JLabel lblbck = new JLabel("");
-		lblbck.setFont(new Font("Rockwell", Font.BOLD, 13));
-		lblbck.setForeground(new Color(240, 255, 255));
-		lblbck.setIcon(new ImageIcon(img)); 
-		lblbck.setBounds(-36, -26, 629, 567);
-		contentPane.add(lblbck);
+		
+		JButton btnSaveChecks = new JButton("Save");
+		btnSaveChecks.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				for(int i = 0; i < checkJList.getModel().getSize(); i++) {
+					
+					if(checkJList.getModel().getElementAt(i) instanceof Food) {
+						
+						Food food;
+						food = (Food)checkJList.getModel().getElementAt(i);
+						
+						System.out.println(food.getName() + " " + food.getPrice() + " " + food.getGram());
+					}
+					else {
+						
+						Beverages beverages;
+						beverages = (Beverages)checkJList.getModel().getElementAt(i);
+						
+						System.out.println(beverages.getName() + " " + beverages.getPrice() + " " + beverages.getMililiter() + " " + beverages.getIsAlcohol());
+					}
+				}
+			}
+		});
+		btnSaveChecks.setBounds(469, 460, 135, 47);
+		contentPane.add(btnSaveChecks);
+		
+		
 										
 		
 	}
