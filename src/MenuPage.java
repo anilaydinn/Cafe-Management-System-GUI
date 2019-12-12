@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -23,7 +24,6 @@ public class MenuPage extends JFrame {
 	private Check check;
 	private ProductFactory foodFactory;
 	private ProductFactory beveragesFactory;
-	private DefaultListModel<Products> listModel;
 	private ProductOperationsDB productOperationsDB = new ProductOperationsDB();
 
 	/**
@@ -31,6 +31,7 @@ public class MenuPage extends JFrame {
 	 */
 	public MenuPage() {
 		setBounds(100, 100, 674, 573);
+		DefaultListModel<Object> listModel;
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -40,21 +41,23 @@ public class MenuPage extends JFrame {
 		check = new Check();
 		foodFactory = new FoodFactory();
 		beveragesFactory = new BeveragesFactory();
-		listModel = new DefaultListModel<Products>();
+		listModel = new DefaultListModel<Object>();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+		JList<Object> checkJList = new JList<Object>();
+		checkJList.setBounds(213, 13, 435, 460);
+		contentPane.add(checkJList);
+		
 		
 		
 		Image img = new ImageIcon(this.getClass().getResource("/menu2.png")).getImage();
 		
-		JList<Products> checkJList = new JList<Products>();
-		checkJList.setBounds(213, 13, 435, 460);
-		contentPane.add(checkJList);
+		
 		
 		JLabel lblTotal = new JLabel("Total:");
 		lblTotal.setForeground(Color.YELLOW);
 		lblTotal.setFont(new Font("Dialog", Font.BOLD, 22));
-		lblTotal.setBounds(213, 485, 222, 46);
+		lblTotal.setBounds(12, 485, 207, 46);
 		contentPane.add(lblTotal);
 		
 		JButton btnWaterml = new JButton("Water(500ml)(2$)");
@@ -405,8 +408,41 @@ public class MenuPage extends JFrame {
 				}
 			}
 		});
-		btnSaveChecks.setBounds(513, 485, 135, 47);
+		btnSaveChecks.setBounds(556, 485, 92, 47);
 		contentPane.add(btnSaveChecks);								
+		
+		JButton btnPay = new JButton("Pay");
+		btnPay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ArrayList<String> contains = productOperationsDB.getContains(getTitle());
+				
+				for(int i = 0; i < contains.size() ; i++) {
+					
+					listModel.addElement(contains.get(i));
+				}
+				checkJList.setModel(listModel);
+				
+				lblTotal.setText("Total: " + productOperationsDB.getTotalPrice(getTitle().toString()));
+				
+				productOperationsDB.deleteCheck(getTitle());
+				
+			}
+		});
+		btnPay.setBounds(213, 485, 92, 46);
+		contentPane.add(btnPay);
+		
+		JButton btnClear = new JButton("Clear");
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				listModel.removeAllElements();
+			}
+		});
+		btnClear.setBounds(377, 485, 98, 46);
+		contentPane.add(btnClear);
+		
+		
 		
 	}
 }

@@ -4,12 +4,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class ProductOperationsDB {
 
 	private Connection con = null;
 	private Statement statement = null;
 	private PreparedStatement preparedStatement = null;
+	private Check check;
+	
 	
 	public ProductOperationsDB() {
 		
@@ -94,5 +97,75 @@ public class ProductOperationsDB {
 		}
 	}
 	
+	public ArrayList<String> getContains(String table_name) {
+		
+		String query = "SELECT * FROM Checks WHERE table_name = ?";
+		ArrayList<String> contains = new ArrayList<String>();
+		
+		try {
+			
+			preparedStatement = con.prepareStatement(query);
+			
+			preparedStatement.setString(1, table_name);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				
+				contains.add(rs.getString("contains"));
+			}	
+			
+			return contains;
+			
+			
+		}catch (SQLException e) {
+			
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
+	public double getTotalPrice(String table_name) {
+		
+		String query = "SELECT * FROM Checks WHERE table_name = ?";
+		double price = 0.0;
+		
+		try {
+			
+			preparedStatement = con.prepareStatement(query);
+			
+			preparedStatement.setString(1, table_name);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				
+				price += rs.getDouble(4);
+			}
+			
+			return price;
+		}catch (SQLException e) {
+			
+			e.printStackTrace();
+			return 0.0;
+		}
+	}
+	
+	public void deleteCheck(String table_name) {
+		
+		String query = "DELETE FROM Checks WHERE table_name = ?";
+		
+		try {
+			
+			preparedStatement = con.prepareStatement(query);
+			
+			preparedStatement.setString(1, table_name);
+			
+			preparedStatement.execute();
+			
+		}catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+	}
 }
