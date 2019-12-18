@@ -437,6 +437,7 @@ public class MenuPage extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				listModel.removeAllElements();
+				lblTotal.setText("Total: 0.00");
 			}
 		});
 		btnClear.setBounds(377, 485, 98, 46);
