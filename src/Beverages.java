@@ -4,9 +4,9 @@ public class Beverages extends Products {
 	private int mililiter;
 	private boolean isAlcohol;
 	
-	public Beverages(String name, int mililiter, boolean isAlcohol, double price) {
+	public Beverages(String name, int mililiter, boolean isAlcohol, double price, int quantity) {
 		
-		super(name,price);
+		super(name,price,quantity);
 		this.mililiter = mililiter;
 		this.isAlcohol = isAlcohol;
 	}
@@ -53,6 +53,6 @@ public class Beverages extends Products {
 	@Override
 	public String toString() {
 		
-		return "Name: " + getName() + " Mililiter: " + getMililiter() + " Alcohol: " + getIsAlcohol() + " Price: " + getPrice(); 
+		return "Name: " + getName() + " Quantity: " + getQuantity() + " Mililiter: " + getMililiter() + " Alcohol: " + getIsAlcohol() + " Price: " + getPrice(); 
 	}
 }

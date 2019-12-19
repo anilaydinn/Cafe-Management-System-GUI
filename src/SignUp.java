@@ -26,7 +26,7 @@ public class SignUp extends JFrame {
 	private JLabel lblPassword;
 	private JLabel lblRepassword;
 	private JLabel lblEmail;
-	private ProductOperationsDB productOperationsDB = new ProductOperationsDB();
+	private ProductOperationsDB productOperationsDB;
 
 	/**
 	 * Create the frame.
@@ -40,6 +40,8 @@ public class SignUp extends JFrame {
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		productOperationsDB = ProductOperationsDB.getProductOperationsDB();
 		
 		Image img = new ImageIcon(this.getClass().getResource("/newest.png")).getImage();
 		

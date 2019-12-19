@@ -40,7 +40,7 @@ public class Inside extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("I-1");
 				menu.setVisible(true);
 				menu.setTitle("I-1");
 			}
@@ -55,7 +55,7 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("I-2");
 				menu.setVisible(true);
 				menu.setTitle("I-2");
 			}
@@ -70,7 +70,7 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("I-3");
 				menu.setVisible(true);
 				menu.setTitle("I-3");
 			}
@@ -85,7 +85,7 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("I-4");
 				menu.setVisible(true);
 				menu.setTitle("I-4");
 			}
@@ -100,7 +100,7 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("I-5");
 				menu.setVisible(true);
 				menu.setTitle("I-5");
 			}
@@ -115,7 +115,7 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("I-6");
 				menu.setVisible(true);
 				menu.setTitle("I-6");
 			}
@@ -130,7 +130,7 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("I-7");
 				menu.setVisible(true);
 				menu.setTitle("I-7");
 			}
@@ -145,7 +145,7 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("I-8");
 				menu.setVisible(true);
 				menu.setTitle("I-8");
 			}
@@ -160,7 +160,7 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("I-9");
 				menu.setVisible(true);
 				menu.setTitle("I-9");
 			}
@@ -175,7 +175,7 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("I-10");
 				menu.setVisible(true);
 				menu.setTitle("I-10");
 			}
@@ -190,7 +190,7 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("I-11");
 				menu.setVisible(true);
 				menu.setTitle("I-11");
 			}
@@ -205,7 +205,7 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("I-12");
 				menu.setVisible(true);
 				menu.setTitle("I-12");
 			}
@@ -220,7 +220,7 @@ public class Inside extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("I-13");
 				menu.setVisible(true);
 				menu.setTitle("I-13");
 			}

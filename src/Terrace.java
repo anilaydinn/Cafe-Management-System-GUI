@@ -40,7 +40,7 @@ public class Terrace extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("T-1");
 				menu.setVisible(true);
 				menu.setTitle("T-1");
 			}
@@ -57,7 +57,7 @@ public class Terrace extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("T-2");
 				menu.setVisible(true);
 				menu.setTitle("T-2");
 			}
@@ -73,7 +73,7 @@ public class Terrace extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("T-3");
 				menu.setVisible(true);
 				menu.setTitle("T-3");
 			}
@@ -89,7 +89,7 @@ public class Terrace extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("T-4");
 				menu.setVisible(true);
 				menu.setTitle("T-4");
 			}
@@ -105,7 +105,7 @@ public class Terrace extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("T-5");
 				menu.setVisible(true);
 				menu.setTitle("T-5");
 			}
@@ -121,7 +121,7 @@ public class Terrace extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("T-6");
 				menu.setVisible(true);
 				menu.setTitle("T-6");
 			}
@@ -137,7 +137,7 @@ public class Terrace extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("T-7");
 				menu.setVisible(true);
 				menu.setTitle("T-7");
 			}
@@ -153,7 +153,7 @@ public class Terrace extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("T-8");
 				menu.setVisible(true);
 				menu.setTitle("T-8");
 			}

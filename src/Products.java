@@ -2,12 +2,14 @@
 public abstract class Products implements Cloneable, Comparable<Products>{
 
 	private String name;
+	private int quantity;
 	private double price;
 	
-	public Products(String name, double price) {
+	public Products(String name, double price, int quantity) {
 		
 		this.name = name;
 		this.price = price;
+		this.quantity = quantity;
 	}
 	
 	public Products() {
@@ -34,6 +36,16 @@ public abstract class Products implements Cloneable, Comparable<Products>{
 	public double getPrice() {
 		
 		return this.price;
+	}
+	
+	public void setQuantity(int quantity) {
+		
+		this.quantity = quantity;
+	}
+	
+	public int getQuantity() {
+		
+		return this.quantity;
 	}
 	
 	@Override

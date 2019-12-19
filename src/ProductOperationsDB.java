@@ -1,3 +1,4 @@
+import java.awt.image.DataBufferUShort;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -5,6 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Vector;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.ListModel;
 
 public class ProductOperationsDB {
 
@@ -12,9 +18,10 @@ public class ProductOperationsDB {
 	private Statement statement = null;
 	private PreparedStatement preparedStatement = null;
 	private Check check;
+	private static ProductOperationsDB productOperationsDB = new ProductOperationsDB();
 	
 	
-	public ProductOperationsDB() {
+	private ProductOperationsDB() {
 		
 		String url = "jdbc:mysql://" + Database.host + ":" + Database.port + "/" + Database.db_name + "?useUnicode=true&characterEncoding=utf8&useSSL=false";
 		
@@ -36,6 +43,11 @@ public class ProductOperationsDB {
 			
 			System.out.println("Connection failed...");
 		}
+	}
+	
+	public static ProductOperationsDB getProductOperationsDB() {
+		
+		return productOperationsDB;
 	}
 	
 	public void addAdmin(String username, String password, String email) {
@@ -165,6 +177,54 @@ public class ProductOperationsDB {
 			
 		}catch (SQLException e) {
 			
+			e.printStackTrace();
+		}
+	}
+	
+	public ListModel<Object> updateJList(String table_name) {
+		
+		String query = "SELECT * FROM Checks WHERE table_name = ?";
+		
+		try {
+			
+			DefaultListModel<Object> model = new DefaultListModel<Object>();
+			
+			preparedStatement = con.prepareStatement(query);
+			
+			preparedStatement.setString(1, table_name);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			
+			while(rs.next()) {
+				
+				String contains = rs.getString("table_name") + " " + rs.getString("contains") + " " + rs.getString("price");
+				model.addElement(contains);
+			}
+			
+			return model;
+		}
+		catch (SQLException e) {
+			
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public void accordingToContainsDelete(String contains) {
+		
+		String query = "DELETE FROM Checks WHERE contains = ?";
+		
+		try {
+			
+			preparedStatement = con.prepareStatement(query);
+			
+			preparedStatement.setString(1, contains);
+			
+			preparedStatement.execute();
+			
+		}catch (SQLException e) {
+			 
 			e.printStackTrace();
 		}
 	}

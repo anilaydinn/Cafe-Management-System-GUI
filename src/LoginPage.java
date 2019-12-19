@@ -28,7 +28,7 @@ public class LoginPage extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtNj;
 	private JPasswordField passwordField;
-	private ProductOperationsDB productOperationsDB = new ProductOperationsDB();
+	private ProductOperationsDB productOperationsDB;
 
 	/**
 	 * Launch the application.
@@ -60,6 +60,7 @@ public class LoginPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
+		productOperationsDB = ProductOperationsDB.getProductOperationsDB();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

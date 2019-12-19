@@ -19,7 +19,7 @@ public class Check {
 		 
 		 for(Products product : products) {
 			 
-			 this.totalPrice += product.getPrice(); 
+			 this.totalPrice += product.getQuantity() * product.getPrice(); 
 		 }
 		 
 	 }

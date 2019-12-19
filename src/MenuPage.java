@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -13,10 +15,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.UIManager;
+import javax.swing.JTextField;
 
 public class MenuPage extends JFrame {
 
@@ -24,13 +29,25 @@ public class MenuPage extends JFrame {
 	private Check check;
 	private ProductFactory foodFactory;
 	private ProductFactory beveragesFactory;
-	private ProductOperationsDB productOperationsDB = new ProductOperationsDB();
+	private ProductOperationsDB productOperationsDB;
+	private String table_name;
+	private JTextField txtFieldWater;
+	private JTextField txtFieldCoke;
+	private JTextField txtFieldTea;
+	private JTextField txtFieldBeer;
+	private JTextField txtFieldCoffee;
+	private JTextField txtFieldBurger;
+	private JTextField txtFieldMeatBall;
+	private JTextField txtFieldWrap;
+	private JTextField txtFieldSoup;
+	private JTextField txtFieldDonner;
+	private JTextField txtFieldSalad;
 
 	/**
 	 * Create the frame.
 	 */
-	public MenuPage() {
-		setBounds(100, 100, 674, 573);
+	public MenuPage(String table_name) {
+		setBounds(100, 100, 790, 573);
 		DefaultListModel<Object> listModel;
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -43,11 +60,15 @@ public class MenuPage extends JFrame {
 		beveragesFactory = new BeveragesFactory();
 		listModel = new DefaultListModel<Object>();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-		JList<Object> checkJList = new JList<Object>();
-		checkJList.setBounds(213, 13, 435, 460);
-		contentPane.add(checkJList);
+		productOperationsDB = ProductOperationsDB.getProductOperationsDB();
 		
+		JList<Object> checkJList = new JList<Object>();
+		checkJList.setBounds(366, 13, 412, 460);
+		contentPane.add(checkJList);
+		this.table_name = table_name;
+		
+		
+		checkJList.setModel(productOperationsDB.updateJList(this.table_name));
 		
 		
 		Image img = new ImageIcon(this.getClass().getResource("/menu2.png")).getImage();
@@ -60,6 +81,8 @@ public class MenuPage extends JFrame {
 		lblTotal.setBounds(12, 485, 207, 46);
 		contentPane.add(lblTotal);
 		
+		lblTotal.setText("Total: " + productOperationsDB.getTotalPrice(table_name) + " TL");
+		
 		JButton btnWaterml = new JButton("Water(500ml)(2$)");
 		btnWaterml.addActionListener(new ActionListener() {
 			
@@ -70,6 +93,7 @@ public class MenuPage extends JFrame {
 				
 				beverages.setName("Water");
 				beverages.setMililiter(500);
+				beverages.setQuantity(Integer.parseInt(txtFieldWater.getText()));
 				beverages.setPrice(2.0);
 				beverages.setIsAlcohol(false);
 				
@@ -84,6 +108,7 @@ public class MenuPage extends JFrame {
 				check.calcTotalPrice();
 				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
+				txtFieldWater.setText("1");
 			}
 		});
 		btnWaterml.setBackground(new Color(255, 255, 0));
@@ -100,6 +125,7 @@ public class MenuPage extends JFrame {
 				Beverages beverages = (Beverages)beveragesFactory.getProducts();
 				beverages.setName("Coke");
 				beverages.setMililiter(330);
+				beverages.setQuantity(Integer.parseInt(txtFieldCoke.getText()));
 				beverages.setPrice(5.00);
 				beverages.setIsAlcohol(false);
 				
@@ -114,6 +140,7 @@ public class MenuPage extends JFrame {
 				check.calcTotalPrice();
 				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
+				txtFieldCoke.setText("1");
 			}
 		});
 		btnCokeml.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -130,6 +157,7 @@ public class MenuPage extends JFrame {
 				Beverages beverages = (Beverages)beveragesFactory.getProducts();
 				beverages.setName("Tea");
 				beverages.setMililiter(100);
+				beverages.setQuantity(Integer.parseInt(txtFieldTea.getText()));
 				beverages.setPrice(3);
 				beverages.setIsAlcohol(false);
 			    
@@ -144,6 +172,7 @@ public class MenuPage extends JFrame {
 				check.calcTotalPrice();
 				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
+				txtFieldTea.setText("1");
 			}
 		});
 		btnTeaml.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -160,6 +189,7 @@ public class MenuPage extends JFrame {
 				Beverages beverages = (Beverages)beveragesFactory.getProducts();
 				beverages.setName("Beer");
 				beverages.setMililiter(500);
+				beverages.setQuantity(Integer.parseInt(txtFieldBeer.getText()));
 				beverages.setPrice(15.0);
 				beverages.setIsAlcohol(true);
 				
@@ -174,6 +204,7 @@ public class MenuPage extends JFrame {
 				check.calcTotalPrice();
 				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
+				txtFieldBeer.setText("1");
 			}
 		});
 		btnml.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -190,6 +221,7 @@ public class MenuPage extends JFrame {
 				Beverages beverages = (Beverages)beveragesFactory.getProducts();
 				beverages.setName("Coffee");
 				beverages.setMililiter(270);
+				beverages.setQuantity(Integer.parseInt(txtFieldCoffee.getText()));
 				beverages.setPrice(7.0);
 				beverages.setIsAlcohol(false);
 				
@@ -204,6 +236,7 @@ public class MenuPage extends JFrame {
 				check.calcTotalPrice();
 				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
+				txtFieldCoffee.setText("1");
 			}
 		});
 		btnCoffeeml.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -220,6 +253,7 @@ public class MenuPage extends JFrame {
 				Food food = (Food)foodFactory.getProducts();
 				food.setName("Donner");
 				food.setGram(120);
+				food.setQuantity(Integer.parseInt(txtFieldDonner.getText()));
 				food.setPrice(22.0);
 				
 				check.addCheck(food);
@@ -233,6 +267,7 @@ public class MenuPage extends JFrame {
 				check.calcTotalPrice();
 				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
+				txtFieldDonner.setText("1");
 			}
 		});
 		btnDonner.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -249,6 +284,7 @@ public class MenuPage extends JFrame {
 				Food food = (Food)foodFactory.getProducts();
 				food.setName("Soup");
 				food.setGram(150);
+				food.setQuantity(Integer.parseInt(txtFieldSoup.getText()));
 				food.setPrice(7.0);
 				
 				check.addCheck(food);
@@ -262,6 +298,7 @@ public class MenuPage extends JFrame {
 				check.calcTotalPrice();
 				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
+				txtFieldSoup.setText("1");
 			}
 		});
 		btnSoupgr.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -278,6 +315,7 @@ public class MenuPage extends JFrame {
 				Food food = (Food)foodFactory.getProducts();
 				food.setName("Wrap");
 				food.setGram(220);
+				food.setQuantity(Integer.parseInt(txtFieldWrap.getText()));
 				food.setPrice(14.0);
 				
 				check.addCheck(food);
@@ -291,6 +329,7 @@ public class MenuPage extends JFrame {
 				check.calcTotalPrice();
 				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
+				txtFieldWrap.setText("1");
 			}
 		});
 		btnWaterml_1.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -307,6 +346,7 @@ public class MenuPage extends JFrame {
 				Food food = (Food)foodFactory.getProducts();
 				food.setName("MeatBall");
 				food.setGram(300);
+				food.setQuantity(Integer.parseInt(txtFieldMeatBall.getText()));
 				food.setPrice(35.0);
 				
 				check.addCheck(food);
@@ -320,6 +360,7 @@ public class MenuPage extends JFrame {
 				check.calcTotalPrice();
 				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
+				txtFieldMeatBall.setText("1");
 			}
 		});
 		btnWater.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -336,6 +377,7 @@ public class MenuPage extends JFrame {
 				Food food = (Food)foodFactory.getProducts();
 				food.setName("Burger");
 				food.setGram(350);
+				food.setQuantity(Integer.parseInt(txtFieldBurger.getText()));
 				food.setPrice(20.0);
 				
 				check.addCheck(food);
@@ -349,6 +391,7 @@ public class MenuPage extends JFrame {
 				check.calcTotalPrice();
 				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
+				txtFieldBurger.setText("1");
 			}
 		});
 		btnHamburgergr.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -365,6 +408,7 @@ public class MenuPage extends JFrame {
 				Food food = (Food)foodFactory.getProducts();
 				food.setName("Salad");
 				food.setGram(180);
+				food.setQuantity(Integer.parseInt(txtFieldSalad.getText()));
 				food.setPrice(12.0);
 				
 				check.addCheck(food);
@@ -378,6 +422,7 @@ public class MenuPage extends JFrame {
 				check.calcTotalPrice();
 				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
+				txtFieldSalad.setText("1");
 			}
 		});
 		btnDonner_1.setFont(new Font("Rockwell", Font.BOLD, 11));
@@ -408,42 +453,407 @@ public class MenuPage extends JFrame {
 				}
 			}
 		});
-		btnSaveChecks.setBounds(556, 485, 92, 47);
+		btnSaveChecks.setBounds(686, 485, 92, 47);
 		contentPane.add(btnSaveChecks);								
 		
 		JButton btnPay = new JButton("Pay");
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ArrayList<String> contains = productOperationsDB.getContains(getTitle());
-				
-				for(int i = 0; i < contains.size() ; i++) {
-					
-					listModel.addElement(contains.get(i));
-				}
-				checkJList.setModel(listModel);
-				
-				lblTotal.setText("Total: " + productOperationsDB.getTotalPrice(getTitle().toString()));
 				
 				productOperationsDB.deleteCheck(getTitle());
-				
+				checkJList.setModel(productOperationsDB.updateJList(table_name));
+				lblTotal.setText("Total: 0.00 TL");
 			}
 		});
-		btnPay.setBounds(213, 485, 92, 46);
+		btnPay.setBounds(366, 488, 92, 46);
 		contentPane.add(btnPay);
 		
-		JButton btnClear = new JButton("Clear");
-		btnClear.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		JButton btnWaterPlus = new JButton("+");
+		btnWaterPlus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				
-				listModel.removeAllElements();
-				lblTotal.setText("Total: 0.00");
+				int water = Integer.parseInt(txtFieldWater.getText());
+				water++;
+				txtFieldWater.setText(Integer.toString(water));
 			}
 		});
-		btnClear.setBounds(377, 485, 98, 46);
-		contentPane.add(btnClear);
+		btnWaterPlus.setBounds(310, 18, 44, 25);
+		contentPane.add(btnWaterPlus);
 		
+		JButton btnWaterMinus = new JButton("-");
+		btnWaterMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(txtFieldWater.getText().equals("1")){
+			
+					return;
+				}
+				
+				int water = Integer.parseInt(txtFieldWater.getText());
+				water--;
+				txtFieldWater.setText(Integer.toString(water));
+			}
+		});
+		btnWaterMinus.setBounds(218, 18, 44, 25);
+		contentPane.add(btnWaterMinus);
 		
+		JButton btnCokeMinus = new JButton("-");
+		btnCokeMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(txtFieldCoke.getText().equals("1")) {
+					
+					return;
+				}
+				
+				int coke = Integer.parseInt(txtFieldCoke.getText());
+				coke--;
+				txtFieldCoke.setText(Integer.toString(coke));
+			}
+		});
+		btnCokeMinus.setBounds(218, 56, 44, 25);
+		contentPane.add(btnCokeMinus);
 		
+		JButton btnCokePlus = new JButton("+");
+		btnCokePlus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int coke = Integer.parseInt(txtFieldCoke.getText());
+				coke++;
+				txtFieldCoke.setText(Integer.toString(coke));
+			}
+		});
+		btnCokePlus.setBounds(310, 56, 44, 25);
+		contentPane.add(btnCokePlus);
+		
+		JButton btnTeaMinus = new JButton("-");
+		btnTeaMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(txtFieldTea.getText().equals("1")) {
+					
+					return;
+				}
+				
+				int tea = Integer.parseInt(txtFieldTea.getText());
+				tea--;
+				txtFieldTea.setText(Integer.toString(tea));
+			}
+		});
+		btnTeaMinus.setBounds(218, 99, 44, 25);
+		contentPane.add(btnTeaMinus);
+		
+		JButton btnTeaPlus = new JButton("+");
+		btnTeaPlus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int tea = Integer.parseInt(txtFieldTea.getText());
+				tea++;
+				txtFieldTea.setText(Integer.toString(tea));
+			}
+		});
+		btnTeaPlus.setBounds(310, 99, 44, 25);
+		contentPane.add(btnTeaPlus);
+		
+		JButton btnBeerMinus = new JButton("-");
+		btnBeerMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(txtFieldBeer.getText().equals("1")) {
+					
+					return;
+				}
+				
+				int beer = Integer.parseInt(txtFieldBeer.getText());
+				beer--;
+				txtFieldBeer.setText(Integer.toString(beer));
+			}
+		});
+		btnBeerMinus.setBounds(218, 142, 44, 25);
+		contentPane.add(btnBeerMinus);
+		
+		JButton btnBeerPlus = new JButton("+");
+		btnBeerPlus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int beer = Integer.parseInt(txtFieldBeer.getText());
+				beer++;
+				txtFieldBeer.setText(Integer.toString(beer));
+			}
+		});
+		btnBeerPlus.setBounds(310, 142, 44, 25);
+		contentPane.add(btnBeerPlus);
+		
+		JButton btnCoffeeMinus = new JButton("-");
+		btnCoffeeMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(txtFieldCoffee.getText().equals("1")) {
+					
+					return;
+				}
+				
+				int coffee = Integer.parseInt(txtFieldCoffee.getText());
+				coffee--;
+				txtFieldCoffee.setText(Integer.toString(coffee));
+				
+			}
+		});
+		btnCoffeeMinus.setBounds(218, 185, 44, 25);
+		contentPane.add(btnCoffeeMinus);
+		
+		JButton btnCoffeePlus = new JButton("+");
+		btnCoffeePlus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int coffee = Integer.parseInt(txtFieldCoffee.getText());
+				coffee++;
+				txtFieldCoffee.setText(Integer.toString(coffee));
+			}
+		});
+		btnCoffeePlus.setBounds(310, 185, 44, 25);
+		contentPane.add(btnCoffeePlus);
+		
+		JButton btnBurgerMinus = new JButton("-");
+		btnBurgerMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(txtFieldBurger.getText().equals("1")) {
+					
+					return;
+				}
+				
+				int burger = Integer.parseInt(txtFieldBurger.getText());
+				burger--;
+				txtFieldBurger.setText(Integer.toString(burger));
+			}
+		});
+		btnBurgerMinus.setBounds(218, 228, 44, 25);
+		contentPane.add(btnBurgerMinus);
+		
+		JButton btnBurgerPlus = new JButton("+");
+		btnBurgerPlus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int burger = Integer.parseInt(txtFieldBurger.getText());
+				burger++;
+				txtFieldBurger.setText(Integer.toString(burger));
+			}
+		});
+		btnBurgerPlus.setBounds(310, 228, 44, 25);
+		contentPane.add(btnBurgerPlus);
+		
+		JButton btnMeatBallMinus = new JButton("-");
+		btnMeatBallMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(txtFieldMeatBall.getText().equals("1")) {
+					
+					return;
+				}
+				
+				int meatBall = Integer.parseInt(txtFieldMeatBall.getText());
+				meatBall--;
+				txtFieldMeatBall.setText(Integer.toString(meatBall));
+			}
+		});
+		btnMeatBallMinus.setBounds(218, 271, 44, 25);
+		contentPane.add(btnMeatBallMinus);
+		
+		JButton btnMeatBallPlus = new JButton("+");
+		btnMeatBallPlus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int meatBall = Integer.parseInt(txtFieldMeatBall.getText());
+				meatBall++;
+				txtFieldMeatBall.setText(Integer.toString(meatBall));
+			}
+		});
+		btnMeatBallPlus.setBounds(310, 271, 44, 25);
+		contentPane.add(btnMeatBallPlus);
+		
+		JButton btnWrapMinus = new JButton("-");
+		btnWrapMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(txtFieldWrap.getText().equals("1")) {
+					
+					return;
+				}
+				
+				int wrap = Integer.parseInt(txtFieldWrap.getText());
+				wrap--;
+				txtFieldWrap.setText(Integer.toString(wrap));
+			}
+		});
+		btnWrapMinus.setBounds(218, 314, 44, 25);
+		contentPane.add(btnWrapMinus);
+		
+		JButton btnWrapPlus = new JButton("+");
+		btnWrapPlus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int wrap = Integer.parseInt(txtFieldWrap.getText());
+				wrap++;
+				txtFieldWrap.setText(Integer.toString(wrap));
+			}
+		});
+		btnWrapPlus.setBounds(310, 314, 44, 25);
+		contentPane.add(btnWrapPlus);
+		
+		JButton btnSoupMinus = new JButton("-");
+		btnSoupMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(txtFieldSoup.getText().equals("1")) {
+					
+					return;
+				}
+				
+				int soup = Integer.parseInt(txtFieldSoup.getText());
+				soup--;
+				txtFieldSoup.setText(Integer.toString(soup));
+			}
+		});
+		btnSoupMinus.setBounds(218, 359, 44, 25);
+		contentPane.add(btnSoupMinus);
+		
+		JButton btnSoupPlus = new JButton("+");
+		btnSoupPlus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int soup = Integer.parseInt(txtFieldSoup.getText());
+				soup++;
+				txtFieldSoup.setText(Integer.toString(soup));
+			}
+		});
+		btnSoupPlus.setBounds(310, 359, 44, 25);
+		contentPane.add(btnSoupPlus);
+		
+		JButton btnDonnerMinus = new JButton("-");
+		btnDonnerMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(txtFieldDonner.getText().equals("1")) {
+					
+					return;
+				}
+				
+				int donner = Integer.parseInt(txtFieldDonner.getText());
+				donner--;
+				txtFieldDonner.setText(Integer.toString(donner));
+			}
+		});
+		btnDonnerMinus.setBounds(218, 402, 44, 25);
+		contentPane.add(btnDonnerMinus);
+		
+		JButton btnDonnerPlus = new JButton("+");
+		btnDonnerPlus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int donner = Integer.parseInt(txtFieldDonner.getText());
+				donner++;
+				txtFieldDonner.setText(Integer.toString(donner));
+			}
+		});
+		btnDonnerPlus.setBounds(310, 402, 44, 25);
+		contentPane.add(btnDonnerPlus);
+		
+		JButton btnSaladMinus = new JButton("-");
+		btnSaladMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(txtFieldSalad.getText().equals("1")) {
+					
+					return;
+				}
+				
+				int salad = Integer.parseInt(txtFieldSalad.getText());
+				salad--;
+				txtFieldSalad.setText(Integer.toString(salad));
+			}
+		});
+		btnSaladMinus.setBounds(218, 445, 44, 25);
+		contentPane.add(btnSaladMinus);
+		
+		JButton btnSaladPlus = new JButton("+");
+		btnSaladPlus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int salad = Integer.parseInt(txtFieldSalad.getText());
+				salad++;
+				txtFieldSalad.setText(Integer.toString(salad));
+			}
+		});
+		btnSaladPlus.setBounds(310, 445, 44, 25);
+		contentPane.add(btnSaladPlus);
+		
+		txtFieldWater = new JTextField();
+		txtFieldWater.setBounds(271, 18, 27, 25);
+		contentPane.add(txtFieldWater);
+		txtFieldWater.setColumns(10);
+		txtFieldWater.setText("1");
+		
+		txtFieldCoke = new JTextField();
+		txtFieldCoke.setText("1");
+		txtFieldCoke.setColumns(10);
+		txtFieldCoke.setBounds(271, 58, 27, 25);
+		contentPane.add(txtFieldCoke);
+		
+		txtFieldTea = new JTextField();
+		txtFieldTea.setText("1");
+		txtFieldTea.setColumns(10);
+		txtFieldTea.setBounds(271, 101, 27, 25);
+		contentPane.add(txtFieldTea);
+		
+		txtFieldBeer = new JTextField();
+		txtFieldBeer.setText("1");
+		txtFieldBeer.setColumns(10);
+		txtFieldBeer.setBounds(271, 142, 27, 25);
+		contentPane.add(txtFieldBeer);
+		
+		txtFieldCoffee = new JTextField();
+		txtFieldCoffee.setText("1");
+		txtFieldCoffee.setColumns(10);
+		txtFieldCoffee.setBounds(271, 185, 27, 25);
+		contentPane.add(txtFieldCoffee);
+		
+		txtFieldBurger = new JTextField();
+		txtFieldBurger.setText("1");
+		txtFieldBurger.setColumns(10);
+		txtFieldBurger.setBounds(271, 228, 27, 25);
+		contentPane.add(txtFieldBurger);
+		
+		txtFieldMeatBall = new JTextField();
+		txtFieldMeatBall.setText("1");
+		txtFieldMeatBall.setColumns(10);
+		txtFieldMeatBall.setBounds(271, 272, 27, 25);
+		contentPane.add(txtFieldMeatBall);
+		
+		txtFieldWrap = new JTextField();
+		txtFieldWrap.setText("1");
+		txtFieldWrap.setColumns(10);
+		txtFieldWrap.setBounds(271, 315, 27, 25);
+		contentPane.add(txtFieldWrap);
+		
+		txtFieldSoup = new JTextField();
+		txtFieldSoup.setText("1");
+		txtFieldSoup.setColumns(10);
+		txtFieldSoup.setBounds(271, 360, 27, 25);
+		contentPane.add(txtFieldSoup);
+		
+		txtFieldDonner = new JTextField();
+		txtFieldDonner.setText("1");
+		txtFieldDonner.setColumns(10);
+		txtFieldDonner.setBounds(271, 402, 27, 25);
+		contentPane.add(txtFieldDonner);
+		
+		txtFieldSalad = new JTextField();
+		txtFieldSalad.setText("1");
+		txtFieldSalad.setColumns(10);
+		txtFieldSalad.setBounds(271, 443, 27, 25);
+		contentPane.add(txtFieldSalad);
+			
 	}
 }

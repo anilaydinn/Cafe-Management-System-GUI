@@ -46,7 +46,7 @@ public class Garden extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("G-2");
 				menu.setVisible(true);
 				menu.setTitle("G-2");
 			}
@@ -63,7 +63,7 @@ public class Garden extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("G-1");
 				menu.setVisible(true);
 				menu.setTitle("G-1");
 			}
@@ -80,7 +80,7 @@ public class Garden extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("G-3");
 				menu.setVisible(true);
 				menu.setTitle("G-3");
 			}
@@ -97,7 +97,7 @@ public class Garden extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("G-4");
 				menu.setVisible(true);
 				menu.setTitle("G-4");
 			}
@@ -114,7 +114,7 @@ public class Garden extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("G-5");
 				menu.setVisible(true);
 				menu.setTitle("G-5");
 			}
@@ -131,7 +131,7 @@ public class Garden extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("G-6");
 				menu.setVisible(true);
 				menu.setTitle("G-6");
 			}
@@ -148,7 +148,7 @@ public class Garden extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("G-7");
 				menu.setVisible(true);
 				menu.setTitle("G-7");
 			}
@@ -165,7 +165,7 @@ public class Garden extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("VIP-2");
 				menu.setVisible(true);
 				menu.setTitle("VIP-2");
 			}
@@ -182,7 +182,7 @@ public class Garden extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				MenuPage menu = new MenuPage();
+				MenuPage menu = new MenuPage("VIP-1");
 				menu.setVisible(true);
 				menu.setTitle("VIP-1");
 			}
