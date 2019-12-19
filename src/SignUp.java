@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
 
 public class SignUp extends JFrame {
 
@@ -35,6 +37,7 @@ public class SignUp extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 450);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(135, 206, 235));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -76,7 +79,7 @@ public class SignUp extends JFrame {
 				String rePassword = textField_2.getText();
 				String email = textField_3.getText();
 				
-				if(password.equals(rePassword)){
+				if(password.equals(rePassword) && !textField.getText().equals("") && !textField_1.getText().equals("") && !textField_2.getText().equals("") && !textField_3.getText().equals("")){
 					
 					productOperationsDB.addAdmin(username, password, email);
 					LoginPage login = new LoginPage();
@@ -90,7 +93,7 @@ public class SignUp extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(349, 240, 103, 48);
+		btnNewButton.setBounds(141, 274, 222, 48);
 		contentPane.add(btnNewButton);
 		
 		lblUsername = new JLabel("Username: ");
@@ -112,12 +115,21 @@ public class SignUp extends JFrame {
 		lblEmail.setFont(new Font("Rockwell", Font.BOLD, 18));
 		lblEmail.setBounds(61, 196, 139, 16);
 		contentPane.add(lblEmail);
-		JLabel lblbck = new JLabel("");
-		lblbck.setFont(new Font("Rockwell", Font.BOLD, 13));
-		lblbck.setForeground(new Color(240, 255, 255));
-		lblbck.setIcon(new ImageIcon(img)); 
-		lblbck.setBounds(0, 0, 782, 390);
-		contentPane.add(lblbck);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				LoginPage login = new LoginPage();
+				login.setTitle("Login");
+				login.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnBack.setFont(new Font("Dialog", Font.BOLD, 18));
+		btnBack.setBackground(Color.WHITE);
+		btnBack.setBounds(449, 274, 222, 48);
+		contentPane.add(btnBack);
 		
 	}
 }

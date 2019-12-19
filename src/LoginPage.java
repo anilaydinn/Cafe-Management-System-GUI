@@ -131,8 +131,9 @@ public class LoginPage extends JFrame {
 		btnSignup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SignUp su = new SignUp();
-				   setVisible(false);
-					su.setVisible(true);
+				su.setVisible(true);
+				setVisible(false);
+				su.setTitle("Sign Up");
 				
 			}
 		});
