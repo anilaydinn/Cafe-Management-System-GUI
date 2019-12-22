@@ -205,11 +205,6 @@ public class Inside extends JFrame {
 			button_6.setBackground(Color.RED);
 		}
 		
-		if(productOperationsDB.isFull("I-9")) {
-			
-			button_6.setBackground(Color.RED);
-		}
-		
 		JButton button_7 = new JButton("I-9");
 		button_7.addActionListener(new ActionListener() {
 			@Override
