@@ -34,7 +34,6 @@ public class Garden extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 650);
 		Image img = new ImageIcon(this.getClass().getResource("/garden.png")).getImage();
-		Image img1 = new ImageIcon(this.getClass().getResource("/ms.png")).getImage();
 		productOperationsDB = ProductOperationsDB.getProductOperationsDB();
 		setLocationRelativeTo(null);
 		

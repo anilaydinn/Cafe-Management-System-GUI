@@ -33,6 +33,6 @@ public class Food extends Products {
 	@Override
 	public String toString() {
 		
-		return "Name: " + getName() + " Quantity: " + getQuantity() + " Gram: " + getGram() + " Price: " + getPrice();
+		return "Name: " + getName() + " Quantity: " + getQuantity() + " Gram: " + getGram();
 	}
 }

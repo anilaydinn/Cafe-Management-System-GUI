@@ -1,5 +1,3 @@
-import java.awt.BorderLayout;
-import java.awt.*;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -17,9 +15,7 @@ import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.JPasswordField;
-import java.util.Random;
 
-import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;

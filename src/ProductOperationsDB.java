@@ -1,23 +1,18 @@
- import java.awt.image.DataBufferUShort;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Vector;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.ListModel;
 
 public class ProductOperationsDB {
 
 	private Connection con = null;
-	private Statement statement = null;
 	private PreparedStatement preparedStatement = null;
-	private Check check;
 	private static ProductOperationsDB productOperationsDB = new ProductOperationsDB();
 	
 	
@@ -198,7 +193,7 @@ public class ProductOperationsDB {
 			
 			while(rs.next()) {
 				
-				String contains = rs.getString("table_name") + " " + rs.getString("contains") + " " + rs.getString("price");
+				String contains = rs.getString("table_name") + " " + rs.getString("contains") + " " + rs.getDouble("price");
 				model.addElement(contains);
 			}
 			

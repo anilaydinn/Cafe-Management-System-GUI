@@ -1,22 +1,16 @@
 
 import java.awt.Color;
-import java.awt.EventQueue;
+
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JList;
@@ -27,8 +21,8 @@ public class MenuPage extends JFrame {
 
 	private JPanel contentPane;
 	private Check check;
-	private ProductFactory foodFactory;
-	private ProductFactory beveragesFactory;
+	private static ProductFactory foodFactory;
+	private static ProductFactory beveragesFactory;
 	private ProductOperationsDB productOperationsDB;
 	private String table_name;
 	private JTextField txtFieldWater;
@@ -56,11 +50,12 @@ public class MenuPage extends JFrame {
 		contentPane.setBackground(UIManager.getColor("RadioButtonMenuItem.acceleratorForeground"));
 		setLocationRelativeTo(null);
 		check = new Check();
-		foodFactory = new FoodFactory();
-		beveragesFactory = new BeveragesFactory();
+		foodFactory = (FoodFactory)FactoryFlyWeight.createFactory(FactoryFlyWeight.food);
+		beveragesFactory = (BeveragesFactory)FactoryFlyWeight.createFactory(FactoryFlyWeight.beverages);
 		listModel = new DefaultListModel<Object>();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		productOperationsDB = ProductOperationsDB.getProductOperationsDB();
+		
 		
 		JList<Object> checkJList = new JList<Object>();
 		checkJList.setBounds(366, 13, 412, 460);
@@ -69,11 +64,6 @@ public class MenuPage extends JFrame {
 		
 		
 		checkJList.setModel(productOperationsDB.updateJList(this.table_name));
-		
-		
-		Image img = new ImageIcon(this.getClass().getResource("/menu2.png")).getImage();
-		
-		
 		
 		JLabel lblTotal = new JLabel("Total:");
 		lblTotal.setForeground(Color.YELLOW);
@@ -89,8 +79,8 @@ public class MenuPage extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				BeveragesFactory beveragesFactory = (BeveragesFactory)FactoryFlyWeight.createFactory(FactoryFlyWeight.beverages);
 				Beverages beverages = (Beverages)beveragesFactory.getProducts();
-				
 				beverages.setName("Water");
 				beverages.setMililiter(500);
 				beverages.setQuantity(Integer.parseInt(txtFieldWater.getText()));
@@ -122,6 +112,7 @@ public class MenuPage extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				BeveragesFactory beveragesFactory = (BeveragesFactory)FactoryFlyWeight.createFactory(FactoryFlyWeight.beverages);
 				Beverages beverages = (Beverages)beveragesFactory.getProducts();
 				beverages.setName("Coke");
 				beverages.setMililiter(330);
@@ -154,6 +145,7 @@ public class MenuPage extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				BeveragesFactory beveragesFactory = (BeveragesFactory)FactoryFlyWeight.createFactory(FactoryFlyWeight.beverages);
 				Beverages beverages = (Beverages)beveragesFactory.getProducts();
 				beverages.setName("Tea");
 				beverages.setMililiter(100);
@@ -186,8 +178,9 @@ public class MenuPage extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				BeveragesFactory beveragesFactory = (BeveragesFactory)FactoryFlyWeight.createFactory(FactoryFlyWeight.beverages);
 				Beverages beverages = (Beverages)beveragesFactory.getProducts();
-				beverages.setName("Beer");
+				beverages.setName("Beer");			
 				beverages.setMililiter(500);
 				beverages.setQuantity(Integer.parseInt(txtFieldBeer.getText()));
 				beverages.setPrice(15.0);
@@ -218,6 +211,7 @@ public class MenuPage extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				BeveragesFactory beveragesFactory = (BeveragesFactory)FactoryFlyWeight.createFactory(FactoryFlyWeight.beverages); 
 				Beverages beverages = (Beverages)beveragesFactory.getProducts();
 				beverages.setName("Coffee");
 				beverages.setMililiter(270);
@@ -250,6 +244,7 @@ public class MenuPage extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				FoodFactory foodFactory = (FoodFactory)FactoryFlyWeight.createFactory(FactoryFlyWeight.food);
 				Food food = (Food)foodFactory.getProducts();
 				food.setName("Donner");
 				food.setGram(120);
@@ -281,6 +276,7 @@ public class MenuPage extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				FoodFactory foodFactory = (FoodFactory)FactoryFlyWeight.createFactory(FactoryFlyWeight.food);
 				Food food = (Food)foodFactory.getProducts();
 				food.setName("Soup");
 				food.setGram(150);
@@ -312,6 +308,7 @@ public class MenuPage extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				FoodFactory foodFactory = (FoodFactory)FactoryFlyWeight.createFactory(FactoryFlyWeight.food);
 				Food food = (Food)foodFactory.getProducts();
 				food.setName("Wrap");
 				food.setGram(220);
@@ -343,6 +340,7 @@ public class MenuPage extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				FoodFactory foodFactory = (FoodFactory)FactoryFlyWeight.createFactory(FactoryFlyWeight.food);
 				Food food = (Food)foodFactory.getProducts();
 				food.setName("MeatBall");
 				food.setGram(300);
@@ -374,6 +372,7 @@ public class MenuPage extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				FoodFactory foodFactory = (FoodFactory)FactoryFlyWeight.createFactory(FactoryFlyWeight.food);
 				Food food = (Food)foodFactory.getProducts();
 				food.setName("Burger");
 				food.setGram(350);
@@ -405,6 +404,7 @@ public class MenuPage extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				FoodFactory foodFactory = (FoodFactory)FactoryFlyWeight.createFactory(FactoryFlyWeight.food);
 				Food food = (Food)foodFactory.getProducts();
 				food.setName("Salad");
 				food.setGram(180);
