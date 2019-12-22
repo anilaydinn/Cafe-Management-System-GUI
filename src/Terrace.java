@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 public class Terrace extends JFrame {
 
 	private JPanel contentPane;
+	private ProductOperationsDB productOperationsDB;
 	
 	/**
 	 * Create the frame.
@@ -30,6 +31,7 @@ public class Terrace extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Image img = new ImageIcon(this.getClass().getResource("/Terrace.png")).getImage();
+		productOperationsDB = ProductOperationsDB.getProductOperationsDB();
 		
 		JButton btnNewButton = new JButton("T-1");
 		btnNewButton.setFont(new Font("Rockwell", Font.BOLD, 13));
@@ -43,10 +45,15 @@ public class Terrace extends JFrame {
 				MenuPage menu = new MenuPage("T-1");
 				menu.setVisible(true);
 				menu.setTitle("T-1");
+				setVisible(false);
 			}
 		});
 		contentPane.add(btnNewButton);
 		
+		if(productOperationsDB.isFull("T-1")) {
+			
+			btnNewButton.setBackground(Color.RED);
+		}
 		
 		JButton button = new JButton("T-2");
 		button.setFont(new Font("Rockwell", Font.BOLD, 13));
@@ -60,9 +67,15 @@ public class Terrace extends JFrame {
 				MenuPage menu = new MenuPage("T-2");
 				menu.setVisible(true);
 				menu.setTitle("T-2");
+				setVisible(false);
 			}
 		});
 		contentPane.add(button);
+		
+		if(productOperationsDB.isFull("T-2")) {
+			
+			button.setBackground(Color.RED);
+		}
 		
 		JButton button_1 = new JButton("T-3");
 		button_1.setFont(new Font("Rockwell", Font.BOLD, 13));
@@ -76,9 +89,15 @@ public class Terrace extends JFrame {
 				MenuPage menu = new MenuPage("T-3");
 				menu.setVisible(true);
 				menu.setTitle("T-3");
+				setVisible(false);
 			}
 		});
 		contentPane.add(button_1);
+		
+		if(productOperationsDB.isFull("T-3")) {
+			
+			button_1.setBackground(Color.RED);
+		}
 		
 		JButton button_2 = new JButton("T-4");
 		button_2.setFont(new Font("Rockwell", Font.BOLD, 13));
@@ -92,9 +111,15 @@ public class Terrace extends JFrame {
 				MenuPage menu = new MenuPage("T-4");
 				menu.setVisible(true);
 				menu.setTitle("T-4");
+				setVisible(false);
 			}
 		});
 		contentPane.add(button_2);
+		
+		if(productOperationsDB.isFull("T-4")) {
+			
+			button_2.setBackground(Color.RED);
+		}
 		
 		JButton button_3 = new JButton("T-5");
 		button_3.setFont(new Font("Rockwell", Font.BOLD, 13));
@@ -108,9 +133,15 @@ public class Terrace extends JFrame {
 				MenuPage menu = new MenuPage("T-5");
 				menu.setVisible(true);
 				menu.setTitle("T-5");
+				setVisible(false);
 			}
 		});
 		contentPane.add(button_3);
+		
+		if(productOperationsDB.isFull("T-5")) {
+			
+			button_3.setBackground(Color.RED);
+		}
 		
 		JButton button_4 = new JButton("T-6");
 		button_4.setFont(new Font("Rockwell", Font.BOLD, 13));
@@ -124,9 +155,15 @@ public class Terrace extends JFrame {
 				MenuPage menu = new MenuPage("T-6");
 				menu.setVisible(true);
 				menu.setTitle("T-6");
+				setVisible(false);
 			}
 		});
 		contentPane.add(button_4);
+		
+		if(productOperationsDB.isFull("T-6")) {
+			
+			button_4.setBackground(Color.RED);
+		}
 		
 		JButton button_5 = new JButton("T-7");
 		button_5.setFont(new Font("Rockwell", Font.BOLD, 13));
@@ -140,9 +177,15 @@ public class Terrace extends JFrame {
 				MenuPage menu = new MenuPage("T-7");
 				menu.setVisible(true);
 				menu.setTitle("T-7");
+				setVisible(false);
 			}
 		});
 		contentPane.add(button_5);
+		
+		if(productOperationsDB.isFull("T-7")) {
+			
+			button_5.setBackground(Color.RED);
+		}
 		
 		JButton button_6 = new JButton("T-8");
 		button_6.setFont(new Font("Rockwell", Font.BOLD, 13));
@@ -156,9 +199,15 @@ public class Terrace extends JFrame {
 				MenuPage menu = new MenuPage("T-8");
 				menu.setVisible(true);
 				menu.setTitle("T-8");
+				setVisible(false);
 			}
 		});
 		contentPane.add(button_6);
+		
+		if(productOperationsDB.isFull("T-8")) {
+			
+			button_6.setBackground(Color.RED);
+		}
 		
 		JButton btnNewButton_1 = new JButton("Door");
 		btnNewButton_1.addActionListener(new ActionListener() {

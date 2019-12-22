@@ -19,6 +19,7 @@ import java.awt.Font;
 public class Garden extends JFrame {
 
 	private JPanel contentPane;
+	private ProductOperationsDB productOperationsDB;
 
 	/**
 	 * Create the frame.
@@ -35,6 +36,7 @@ public class Garden extends JFrame {
 		setBounds(100, 100, 800, 650);
 		Image img = new ImageIcon(this.getClass().getResource("/garden.png")).getImage();
 		Image img1 = new ImageIcon(this.getClass().getResource("/ms.png")).getImage();
+		productOperationsDB = ProductOperationsDB.getProductOperationsDB();
 		
 		JButton btnNewButton = new JButton("G-2");
 		btnNewButton.setFont(new Font("Rockwell", Font.BOLD, 13));
@@ -49,6 +51,7 @@ public class Garden extends JFrame {
 				MenuPage menu = new MenuPage("G-2");
 				menu.setVisible(true);
 				menu.setTitle("G-2");
+				setVisible(false);
 			}
 		});
 		contentPane.add(btnNewButton);
@@ -66,9 +69,15 @@ public class Garden extends JFrame {
 				MenuPage menu = new MenuPage("G-1");
 				menu.setVisible(true);
 				menu.setTitle("G-1");
+				setVisible(false);
 			}
 		});
 		contentPane.add(btnTable);
+		
+		if(productOperationsDB.isFull("G-1")) {
+			
+			btnTable.setBackground(Color.RED);
+		}
 		
 		JButton btnG = new JButton("G-3");
 		btnG.setForeground(Color.BLACK);
@@ -83,9 +92,15 @@ public class Garden extends JFrame {
 				MenuPage menu = new MenuPage("G-3");
 				menu.setVisible(true);
 				menu.setTitle("G-3");
+				setVisible(false);
 			}
 		});
 		contentPane.add(btnG);
+		
+		if(productOperationsDB.isFull("G-3")) {
+			
+			btnG.setBackground(Color.RED);
+		}
 		
 		JButton btnG_1 = new JButton("G-4");
 		btnG_1.setForeground(Color.BLACK);
@@ -100,9 +115,15 @@ public class Garden extends JFrame {
 				MenuPage menu = new MenuPage("G-4");
 				menu.setVisible(true);
 				menu.setTitle("G-4");
+				setVisible(false);
 			}
 		});
 		contentPane.add(btnG_1);
+		
+		if(productOperationsDB.isFull("G-4")) {
+			
+			btnG_1.setBackground(Color.RED);
+		}
 		
 		JButton btnG_2 = new JButton("G-5");
 		btnG_2.setForeground(Color.BLACK);
@@ -117,9 +138,15 @@ public class Garden extends JFrame {
 				MenuPage menu = new MenuPage("G-5");
 				menu.setVisible(true);
 				menu.setTitle("G-5");
+				setVisible(false);
 			}
 		});
 		contentPane.add(btnG_2);
+		
+		if(productOperationsDB.isFull("G-5")) {
+			
+			btnG_2.setBackground(Color.RED);
+		}
 		
 		JButton btnG_3 = new JButton("G-6");
 		btnG_3.setForeground(Color.BLACK);
@@ -134,9 +161,15 @@ public class Garden extends JFrame {
 				MenuPage menu = new MenuPage("G-6");
 				menu.setVisible(true);
 				menu.setTitle("G-6");
+				setVisible(false);
 			}
 		});
 		contentPane.add(btnG_3);
+		
+		if(productOperationsDB.isFull("G-6")) {
+			
+			btnG_3.setBackground(Color.RED);
+		}
 		
 		JButton btnG_4 = new JButton("G-7");
 		btnG_4.setForeground(Color.BLACK);
@@ -151,9 +184,15 @@ public class Garden extends JFrame {
 				MenuPage menu = new MenuPage("G-7");
 				menu.setVisible(true);
 				menu.setTitle("G-7");
+				setVisible(false);
 			}
 		});
 		contentPane.add(btnG_4);
+		
+		if(productOperationsDB.isFull("G-7")) {
+			
+			btnG_4.setBackground(Color.RED);
+		}
 		
 		JButton btnVp = new JButton("VIP-2");
 		btnVp.setForeground(Color.BLACK);
@@ -168,9 +207,15 @@ public class Garden extends JFrame {
 				MenuPage menu = new MenuPage("VIP-2");
 				menu.setVisible(true);
 				menu.setTitle("VIP-2");
+				setVisible(false);
 			}
 		});
 		contentPane.add(btnVp);
+		
+		if(productOperationsDB.isFull("VIP-2")) {
+			
+			btnVp.setBackground(Color.RED);
+		}
 		
 		JButton btnGspeacial = new JButton("VIP-1");
 		btnGspeacial.setForeground(Color.BLACK);
@@ -185,9 +230,15 @@ public class Garden extends JFrame {
 				MenuPage menu = new MenuPage("VIP-1");
 				menu.setVisible(true);
 				menu.setTitle("VIP-1");
+				setVisible(false);
 			}
 		});
 		contentPane.add(btnGspeacial);
+		
+		if(productOperationsDB.isFull("VIP-1")) {
+			
+			btnGspeacial.setBackground(Color.RED);
+		}
 		
 		JButton btnNewButton_1 = new JButton("Door");
 		btnNewButton_1.addActionListener(new ActionListener() {

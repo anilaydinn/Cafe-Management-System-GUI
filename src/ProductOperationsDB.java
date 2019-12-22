@@ -1,4 +1,4 @@
-import java.awt.image.DataBufferUShort;
+ import java.awt.image.DataBufferUShort;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -226,6 +226,30 @@ public class ProductOperationsDB {
 		}catch (SQLException e) {
 			 
 			e.printStackTrace();
+		}
+	}
+	
+	public boolean isFull(String table_name) {
+		
+		String query = "SELECT * FROM Checks WHERE table_name = ?";
+		
+		try {
+			
+			preparedStatement = con.prepareStatement(query);
+			
+			preparedStatement.setString(1, table_name);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			if(rs.next()) {
+				
+				return true;
+			}
+			return false;
+		}catch (SQLException e) {
+			
+			e.printStackTrace();
+			return false;
 		}
 	}
 }

@@ -453,7 +453,7 @@ public class MenuPage extends JFrame {
 				}
 			}
 		});
-		btnSaveChecks.setBounds(686, 485, 92, 47);
+		btnSaveChecks.setBounds(686, 488, 92, 47);
 		contentPane.add(btnSaveChecks);								
 		
 		JButton btnPay = new JButton("Pay");
@@ -466,7 +466,7 @@ public class MenuPage extends JFrame {
 				lblTotal.setText("Total: 0.00 TL");
 			}
 		});
-		btnPay.setBounds(366, 488, 92, 46);
+		btnPay.setBounds(533, 488, 92, 46);
 		contentPane.add(btnPay);
 		
 		JButton btnWaterPlus = new JButton("+");
@@ -854,6 +854,18 @@ public class MenuPage extends JFrame {
 		txtFieldSalad.setColumns(10);
 		txtFieldSalad.setBounds(271, 443, 27, 25);
 		contentPane.add(txtFieldSalad);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Inside inside = new Inside();
+				inside.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnBack.setBounds(376, 488, 92, 46);
+		contentPane.add(btnBack);
 			
 	}
 }
