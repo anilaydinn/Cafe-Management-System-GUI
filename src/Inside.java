@@ -200,6 +200,11 @@ public class Inside extends JFrame {
 		button_6.setBounds(454, 136, 130, 74);
 		contentPane.add(button_6);
 		
+		if(productOperationsDB.isFull("I-8")) {
+			
+			button_6.setBackground(Color.RED);
+		}
+		
 		if(productOperationsDB.isFull("I-9")) {
 			
 			button_6.setBackground(Color.RED);

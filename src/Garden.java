@@ -31,12 +31,12 @@ public class Garden extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 650);
 		Image img = new ImageIcon(this.getClass().getResource("/garden.png")).getImage();
 		Image img1 = new ImageIcon(this.getClass().getResource("/ms.png")).getImage();
 		productOperationsDB = ProductOperationsDB.getProductOperationsDB();
+		setLocationRelativeTo(null);
 		
 		JButton btnNewButton = new JButton("G-2");
 		btnNewButton.setFont(new Font("Rockwell", Font.BOLD, 13));
@@ -55,6 +55,11 @@ public class Garden extends JFrame {
 			}
 		});
 		contentPane.add(btnNewButton);
+		
+		if(productOperationsDB.isFull("G-2")) {
+			
+			btnNewButton.setBackground(Color.RED);
+		}
 		
 		JButton btnTable = new JButton("G-1");
 		btnTable.setForeground(Color.BLACK);
