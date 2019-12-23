@@ -5,6 +5,9 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -99,6 +102,7 @@ public class MenuPage extends JFrame {
 				lblTotal.setText("Total: " + check.getTotalPrice() + " TL");
 				check.removeAll();
 				txtFieldWater.setText("1");
+				
 			}
 		});
 		btnWaterml.setBackground(new Color(255, 255, 0));

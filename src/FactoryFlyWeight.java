@@ -30,7 +30,7 @@ public class FactoryFlyWeight {
 				break;
 			
 			default:
-				System.out.println("You dont have like a this factory");		
+				System.out.println("Please insert a correct input!");		
 		}
 		
 		return factory;

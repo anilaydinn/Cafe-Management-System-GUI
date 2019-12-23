@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Check {
 
-	 private ArrayList<Products> products = new ArrayList<Products>();
+	 private List<Products> products = new ArrayList<Products>();
 	 private double totalPrice;
 	 
 	 public Check() {
@@ -50,7 +52,7 @@ public class Check {
 		 }
 	 }
 	 
-	 public ArrayList<Products> getProducts(){
+	 public List<Products> getProducts(){
 		 
 		 return products;
 	 }

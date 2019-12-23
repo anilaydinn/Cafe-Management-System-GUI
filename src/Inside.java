@@ -350,6 +350,20 @@ public class Inside extends JFrame {
 		btnNewButton_2.setBounds(490, 13, 111, 30);
 		contentPane.add(btnNewButton_2);
 		
+		JButton btnLogout = new JButton("Logout");
+		btnLogout.setForeground(Color.WHITE);
+		btnLogout.setBackground(Color.RED);
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				LoginPage login = new LoginPage();
+				login.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnLogout.setBounds(651, 12, 131, 29);
+		contentPane.add(btnLogout);
+		
 		JLabel lblbck = new JLabel("");
 		lblbck.setFont(new Font("Rockwell", Font.BOLD, 13));
 		lblbck.setForeground(new Color(240, 255, 255));
