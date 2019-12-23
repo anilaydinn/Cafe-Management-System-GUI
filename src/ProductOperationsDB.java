@@ -193,7 +193,7 @@ public class ProductOperationsDB {
 			
 			while(rs.next()) {
 				
-				String contains = rs.getString("table_name") + " " + rs.getString("contains") + " " + rs.getDouble("price");
+				String contains = rs.getString("table_name") + " " + rs.getString("contains") + " " + rs.getDouble("price") + " TL";
 				model.addElement(contains);
 			}
 			

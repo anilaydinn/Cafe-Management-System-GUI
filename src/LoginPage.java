@@ -17,6 +17,7 @@ import java.awt.Image;
 import javax.swing.JPasswordField;
 
 import java.awt.event.ActionListener;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 public class LoginPage extends JFrame {
@@ -25,6 +26,10 @@ public class LoginPage extends JFrame {
 	private JTextField txtNj;
 	private JPasswordField passwordField;
 	private ProductOperationsDB productOperationsDB;
+	private JTextField tfrobot;
+	private Random random;
+	private int a;
+	private int b;
 
 	/**
 	 * Launch the application.
@@ -60,9 +65,9 @@ public class LoginPage extends JFrame {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JCheckBox chckbxBruteForce = new JCheckBox("Are you human ?");
-		chckbxBruteForce.setBounds(75, 377, 146, 23);
-		contentPane.add(chckbxBruteForce);
+		random = new Random();
+		a = random.nextInt(10);
+		b = random.nextInt(10);
 		
 		JButton btnLogin = new JButton("SignIn");
 		btnLogin.addActionListener(new ActionListener() {
@@ -73,17 +78,17 @@ public class LoginPage extends JFrame {
 				boolean loginSuccess = productOperationsDB.login(username, password);
 				
 				
-				if(loginSuccess && chckbxBruteForce.isSelected()) {
+				if(loginSuccess && a + b == Integer.parseInt(tfrobot.getText())) {
 					
 					Inside inside = new Inside();
 					inside.setVisible(true);
 					setVisible(false);
 				}
-				else if(chckbxBruteForce.isSelected() == false) {
+				else if(loginSuccess && a + b != Integer.parseInt(tfrobot.getText())) {
 					
 					JOptionPane.showMessageDialog(null, "Please prove you are human!");
 				}
-				else if(chckbxBruteForce.isSelected() == true && loginSuccess == false){
+				else{
 				
 					JOptionPane.showMessageDialog(null, "Username or Password incorrect.");
 				}
@@ -137,6 +142,33 @@ public class LoginPage extends JFrame {
 		btnSignup.setBackground(Color.WHITE);
 		btnSignup.setBounds(336, 429, 110, 47);
 		contentPane.add(btnSignup);
+		
+		JLabel lblrobot = new JLabel("");
+		lblrobot.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblrobot.setBounds(79, 384, 111, 15);
+		contentPane.add(lblrobot);
+		lblrobot.setText(Integer.toString(a) + " + " + Integer.toString(b) + " =");
+		
+		
+		tfrobot = new JTextField();
+		tfrobot.setText("0");
+		tfrobot.setBounds(201, 383, 44, 19);
+		contentPane.add(tfrobot);
+		tfrobot.setColumns(10);
+		
+		JButton btnRefresh = new JButton("Refresh");
+		btnRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				a = random.nextInt(10);
+				b = random.nextInt(10);
+				lblrobot.setText(Integer.toString(a) + " + " + Integer.toString(b) + " =");
+			}
+		});
+		btnRefresh.setFont(new Font("Dialog", Font.BOLD, 18));
+		btnRefresh.setBackground(Color.WHITE);
+		btnRefresh.setBounds(327, 380, 119, 23);
+		contentPane.add(btnRefresh);
 		
 	}
 }
