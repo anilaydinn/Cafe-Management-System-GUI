@@ -7,29 +7,36 @@ public class FactoryFlyWeight {
 	
 	private static HashMap<Integer, ProductFactory> map = new HashMap<>();
 	
-	public static ProductFactory createFactory(int n) {
+	public static ProductFactory createFactory(int number) {
 		
 		ProductFactory factory=null;
 		
-		switch(n) {
+		switch(number) {
 			
 			case 1:
-				factory= map.get(n);
+				
+				factory= map.get(number);
+				
 				if(factory==null) {
+					
 					factory = new BeveragesFactory();
-					map.put(n, factory);
+					map.put(number, factory);
 				}
 				break;
 					
 			case 2:
-				factory= map.get(n);
+				
+				factory= map.get(number);
+				
 				if(factory==null) {
+					
 					factory = new FoodFactory();
-					map.put(n, factory);
+					map.put(number, factory);
 				}
 				break;
 			
 			default:
+				
 				System.out.println("Please insert a correct input!");		
 		}
 		

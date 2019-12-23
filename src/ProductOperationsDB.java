@@ -206,24 +206,6 @@ public class ProductOperationsDB {
 		}
 	}
 	
-	public void accordingToContainsDelete(String contains) {
-		
-		String query = "DELETE FROM Checks WHERE contains = ?";
-		
-		try {
-			
-			preparedStatement = con.prepareStatement(query);
-			
-			preparedStatement.setString(1, contains);
-			
-			preparedStatement.execute();
-			
-		}catch (SQLException e) {
-			 
-			e.printStackTrace();
-		}
-	}
-	
 	public boolean isFull(String table_name) {
 		
 		String query = "SELECT * FROM Checks WHERE table_name = ?";
